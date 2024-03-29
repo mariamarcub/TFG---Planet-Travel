@@ -5,12 +5,22 @@ services:
 # https://hub.docker.com/_/postgres
 # https://github.com/cookiecutter/cookiecutter-django
 # https://cookiecutter-django.readthedocs.io/en/latest/developing-locally-docker.html
+
+  backend:
+    #    tty: true
+    command: python manage.py runserver 0.0.0.0:8000
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+
   postgres:
-    build:
-      context: .
-      dockerfile: ./compose/production/postgres/Dockerfile
-    image: django-base-pro_production_postgres
-    container_name: django-tfg
+
+    image: postgres:15
+    container_name: django-tfg-DB
     env_file:
       - ./.envs/.local/.postgres
     volumes:
