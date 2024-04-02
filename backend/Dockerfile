@@ -7,6 +7,7 @@ WORKDIR /app
 # Establece variables de entorno para Python
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+ENV DJANGO_SETTINGS_MODULE config.settings.production
 
 # Instala dependencias de sistema requeridas
 RUN apt-get update && \
