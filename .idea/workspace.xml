@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="975172e7-09c7-45e4-bcc2-486246dea8cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/geo/management/commands/import_cities_from_csv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/2324-pi-mariamarcub.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/2324-pi-mariamarcub.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/geo/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/geo/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/geo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/geo/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +42,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/marma/OneDrive/Documents/proyectos/2324-pi-mariamarcub",
+    "last_opened_file_path": "C:/Users/marma/OneDrive/Documents/proyectos/2324-pi-mariamarcub/frontend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -54,7 +52,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.import_cities_from_csv">
+  <component name="RunManager" selected="Python.runserver">
     <configuration name="import_cities_from_csv" type="PythonConfigurationType" factoryName="Python">
       <module name="2324-pi-mariamarcub" />
       <option name="ENV_FILES" value="" />
@@ -126,14 +124,43 @@
       <workItem from="1711706281558" duration="667000" />
       <workItem from="1711706968177" duration="4321000" />
       <workItem from="1711711607670" duration="2474000" />
+      <workItem from="1711714152109" duration="2323000" />
+      <workItem from="1711820794042" duration="2525000" />
+      <workItem from="1711996912836" duration="631000" />
+      <workItem from="1711997562638" duration="1030000" />
+      <workItem from="1712069212483" duration="995000" />
+      <workItem from="1712070819975" duration="1990000" />
+      <workItem from="1712072841911" duration="5807000" />
+      <workItem from="1712080171849" duration="1184000" />
+      <workItem from="1712246105111" duration="4114000" />
+      <workItem from="1712481789397" duration="6240000" />
+      <workItem from="1712509803598" duration="1767000" />
+      <workItem from="1712589194682" duration="4788000" />
+      <workItem from="1712594101735" duration="3653000" />
+      <workItem from="1712860546175" duration="616000" />
+      <workItem from="1712930577969" duration="1201000" />
+      <workItem from="1712932187169" duration="4782000" />
+      <workItem from="1712939145619" duration="1094000" />
+      <workItem from="1712940564398" duration="2114000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/2324_pi_mariamarcub$import_cities_from_csv.coverage" NAME="import_cities_from_csv Coverage Results" MODIFIED="1711714064896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/2324_pi_mariamarcub$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1711708967157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/2324_pi_mariamarcub$import_cities_from_csv.coverage" NAME="import_cities_from_csv Coverage Results" MODIFIED="1711714516510" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/2324_pi_mariamarcub$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1712071898401" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

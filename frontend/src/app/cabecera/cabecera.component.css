@@ -1,0 +1,74 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+nav{
+    background: rgba(255, 255, 255, 0.301);   
+    width: 100%;    
+
+}
+
+nav ul{
+    display: flex;
+    border: black 2px solid;
+    background: rgba(255, 255, 255, 0.137);
+    position: relative;
+    z-index: 2;
+}
+
+nav ul .derecha{
+    width: 30%;
+}
+
+nav ul .izquierda{
+    width: 70%;
+
+}
+
+nav ul .derecha{
+    display: inline-block;
+    color:blue;
+    padding-left: 20px;
+}
+
+nav ul .derecha a{
+    display: inline-block;
+    color:rgb(12, 122, 1);
+    padding-left: 70px;
+    font-weight: bolder;
+    font-size: 100px;
+}
+
+nav ul .izquierda li{
+    display: inline-block;
+    padding-left: 100px;
+}
+
+
+nav ul .izquierda li a{
+    display: inline-block;
+    color:rgb(0, 0, 0);
+    padding-left: 20px;
+    font-weight: bolder;
+    font-size: 20px;
+    margin-top: 20%;
+}
+
+.logo{
+    height: 60px;
+    width: 60px;
+
+}
+
+.foro{
+    width: 100%;
+    height: 600px;
+    position: relative;
+    z-index: 1;
+
+}
+

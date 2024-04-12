@@ -1,0 +1,32 @@
+<header class="header">
+    <nav class="header_nav">
+        <ul class="header__ul">
+            <li class="header__li">
+                <a href="#" class="header__a">PLANET TRAVEL<img src="./assets/logo.png" alt="" class="logo"></a>
+            </li>
+            <li class="header__li">
+                <a href="#" class="header__a">FECHA</a>
+            </li>
+            <li class="header__li">
+                <div class="dropdown"
+                (mouseenter)="showDropdown = true"
+                (mouseleave)="showDropdown = false">
+                    <a href="#" class="header__a">DESTINO</a>
+                    <div class="dropdown-content" *ngIf="showDropdown">
+                        <app-continent></app-continent> <!-- Invocamos al html de app-continent -->
+                    </div>
+                </div>
+            </li>
+            <li class="header__li">
+                <a href="#" class="header__a">GRUPOS DE EDAD</a>
+            </li>
+            <li class="header__li">
+                <a href="#" class="header__a">LOGIN IN</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="imagenes">
+        <img src="./assets/foro.jpg" alt="" class="foro">
+    </div>
+</header>
