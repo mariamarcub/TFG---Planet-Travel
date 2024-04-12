@@ -39,7 +39,16 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:4200',
+# ]
+
+CORS_ALLOWED_HEADERS = ['content-type', 'x-csrftoken']
+CORS_EXPOSED_HEADERS = ['Custom-Header']
 
 
 # Application definition
@@ -51,6 +60,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'main',
     'geo',
     'rest_framework',
@@ -58,14 +68,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # CORS middleware para manejar los headers de control de acceso
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # Es importante el orden para que las traducciones esten preparadas
-    'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.common.CommonMiddleware',  # Importante para el manejo de diversas funcionalidades
+    'django.middleware.csrf.CsrfViewMiddleware',  # Protección contra ataques CSRF
+    'django.contrib.auth.middleware.AuthenticationMiddleware',  # Maneja la autenticación de usuarios
+    'django.contrib.messages.middleware.MessageMiddleware',  # Permite el manejo de mensajes en la sesión
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',  # Protección contra clickjacking
 ]
 
 ROOT_URLCONF = 'main.urls'
@@ -89,17 +98,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': CONFIG_BASE_DIR / 'db.sqlite3',
-    }
-}
 
 
 # Password validation
@@ -155,4 +153,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Take environment variables from .env file
 environ.Env.read_env(os.path.join(SETTINGS_DIR, '.env'))
-
