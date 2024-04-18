@@ -1,5 +1,3 @@
-<ul>
-    <li *ngFor="let continent of continents">
-        {{ continent.name }} <!--Llamamos los nombres de los continentes-->
-    </li>
-</ul>
+<ng-container *ngFor="let continent of continents" class="continent-item"><!--Estoy iterando con ngFor para que cada continente sea un enlace-->
+        <a class="month-item" href="#">{{ continent.name }}</a><br>
+</ng-container>

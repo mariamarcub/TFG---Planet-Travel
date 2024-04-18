@@ -7,11 +7,11 @@ import { Continent } from './continent.model';
   providedIn: 'root'
 })
 export class ContinentService {
-  private apiUrl = 'http://localhost:8000/continents/'; //Relacionamos con la URL de Django
+  private apiUrl = 'http://localhost:8000/continents/';
 
   constructor(private http: HttpClient) { }
 
-  getContinents(): Observable<Continent[]> { //Llamamos al método GET de django y metemos los valores en el array Continent
+  getContinents(): Observable<Continent[]> {
     return this.http.get<Continent[]>(this.apiUrl);
   }
 }

@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContinentComponent } from './continent.component';
+import { AgeGroupComponent } from './age-group.component';
 
-describe('ContinentComponent', () => {
-  let component: ContinentComponent;
-  let fixture: ComponentFixture<ContinentComponent>;
+describe('AgeGroupComponent', () => {
+  let component: AgeGroupComponent;
+  let fixture: ComponentFixture<AgeGroupComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ContinentComponent]
+      declarations: [AgeGroupComponent]
     });
-    fixture = TestBed.createComponent(ContinentComponent);
+    fixture = TestBed.createComponent(AgeGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

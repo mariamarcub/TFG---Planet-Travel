@@ -8,14 +8,14 @@ import { Continent } from './continent.model';
   styleUrls: ['./continent.component.css']
 })
 export class ContinentComponent implements OnInit {
-  continents: Continent[] = []; //Traemos el array que contiene los continentes de la BD de django
+  continents: Continent[] = [];
 
   constructor(private continentService: ContinentService) {}
 
   ngOnInit() {
     this.continentService.getContinents().subscribe({
       next: (data) => {
-        this.continents = data; //Utilizamos este this.continents para después sacar los continentes por pantalla
+        this.continents = data;
       },
       error: (error) => {
         console.error('There was an error!', error);

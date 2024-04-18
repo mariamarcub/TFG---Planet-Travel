@@ -1,0 +1,30 @@
+<h2>BIENVENIDO A TRAVEL PLANET</h2>
+
+
+
+<form (submit)="registroForm()">
+    <label for="username">Nombre:</label>
+    <input type="text" id="username" name="username" [(ngModel)]="registrar.name">
+    <label for="username">Primer apellido:</label>
+    <input type="text" id="lastname" name="lastname" [(ngModel)]="registrar.lastname">
+    <label for="username">Segundo apellido:</label>
+    <input type="text" id="secondlastname" name="secondlastname" [(ngModel)]="registrar.secondlastname">    
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" name="password" [(ngModel)]="registrar.password">
+  
+    <a href="#"><input type="submit" class="botonCrear" value="Registrar Usuario"/></a>
+</form>
+
+
+<form (submit)="iniciarSesionForm()">
+    <label for="username">Nombre:</label>
+    <input type="text" id="username" name="username" [(ngModel)]="iniciarSesion.name">     
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" name="password" [(ngModel)]="iniciarSesion.password">
+  
+    <input type="submit" class="botonIniciarSesion" value="Iniciar Sesión"> 
+
+</form>
+
+
+<app-footer></app-footer>

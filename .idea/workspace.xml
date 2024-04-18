@@ -5,8 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="975172e7-09c7-45e4-bcc2-486246dea8cc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/2324-pi-mariamarcub.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/2324-pi-mariamarcub.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/geo/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/geo/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/geo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/geo/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/geo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/geo/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/cabecera/cabecera.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/cabecera/cabecera.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/cabecera/cabecera.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/cabecera/cabecera.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/cabecera/cabecera.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/cabecera/cabecera.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/cabecera/cabecera.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/cabecera/cabecera.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/continent/continent.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/continent/continent.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/continent/continent.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/continent/continent.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/continent/continent.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/continent/continent.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/continent/continent.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/continent/continent.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/continent/continent.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/continent/continent.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/continent/continent.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/continent/continent.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,23 +50,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.import_cities_from_csv.executor": "Run",
-    "Python.runserver.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/marma/OneDrive/Documents/proyectos/2324-pi-mariamarcub/frontend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.import_cities_from_csv.executor&quot;: &quot;Run&quot;,
+    &quot;Python.runserver.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/marma/OneDrive/Documents/proyectos/2324-pi-mariamarcub/frontend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.runserver">
     <configuration name="import_cities_from_csv" type="PythonConfigurationType" factoryName="Python">
       <module name="2324-pi-mariamarcub" />
@@ -141,7 +156,10 @@
       <workItem from="1712930577969" duration="1201000" />
       <workItem from="1712932187169" duration="4782000" />
       <workItem from="1712939145619" duration="1094000" />
-      <workItem from="1712940564398" duration="2114000" />
+      <workItem from="1712940564398" duration="2235000" />
+      <workItem from="1712944773698" duration="2059000" />
+      <workItem from="1713277856085" duration="7997000" />
+      <workItem from="1713452656752" duration="6915000" />
     </task>
     <servers />
   </component>

@@ -19,4 +19,3 @@ describe('CabeceraComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-

@@ -1,0 +1,23 @@
+footer{
+    background-color: #01662a; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    position: fixed; /* Fijar posición */
+    bottom: 0; /* Colocar en la parte inferior */
+    left: 0; /* Colocar en el extremo izquierdo */
+    width: 100%; /* Ancho completo */
+    z-index: 2;
+
+
+}
+
+footer a{
+    text-align: left;
+    display: block;
+    position: relative;
+    font-size: 16px;
+    text-decoration: none;
+    color: #fff; /* Color del texto */    
+    margin-top: 10px;
+    margin-left: 10px;
+
+}

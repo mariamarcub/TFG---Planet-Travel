@@ -1,16 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MonthsComponent } from './months.component';
 
-import { ContinentComponent } from './continent.component';
-
-describe('ContinentComponent', () => {
-  let component: ContinentComponent;
-  let fixture: ComponentFixture<ContinentComponent>;
+describe('MonthsComponent', () => {
+  let component: MonthsComponent;
+  let fixture: ComponentFixture<MonthsComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ContinentComponent]
+      declarations: [MonthsComponent]
     });
-    fixture = TestBed.createComponent(ContinentComponent);
+    fixture = TestBed.createComponent(MonthsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
