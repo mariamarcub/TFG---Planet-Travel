@@ -6,22 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="975172e7-09c7-45e4-bcc2-486246dea8cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/geo/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/geo/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/geo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/geo/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/geo/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/geo/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/geo/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/geo/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/geo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/geo/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/geo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/geo/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/main/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/main/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/main/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/main/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/main/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/main/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/main/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/cabecera/cabecera.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/cabecera/cabecera.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/cabecera/cabecera.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/cabecera/cabecera.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/cabecera/cabecera.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/cabecera/cabecera.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/cabecera/cabecera.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/cabecera/cabecera.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/continent/continent.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/continent/continent.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/continent/continent.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/continent/continent.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/continent/continent.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/continent/continent.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/continent/continent.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/continent/continent.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/continent/continent.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/continent/continent.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/continent/continent.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/continent/continent.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/login/login.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/login/login.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/login/login.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +157,9 @@
       <workItem from="1712940564398" duration="2235000" />
       <workItem from="1712944773698" duration="2059000" />
       <workItem from="1713277856085" duration="7997000" />
-      <workItem from="1713452656752" duration="6915000" />
+      <workItem from="1713452656752" duration="8138000" />
+      <workItem from="1713518302695" duration="1795000" />
+      <workItem from="1713796376637" duration="9827000" />
     </task>
     <servers />
   </component>

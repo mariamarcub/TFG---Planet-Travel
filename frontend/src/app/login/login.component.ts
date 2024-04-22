@@ -10,8 +10,8 @@ import { HttpClient } from '@angular/common/http'; //Permite realizar solicitude
 export class LoginComponent {
     registrar = { //Indicamos los valores que esperamos recibir
         name: '',
-        lastname:'',
-        secondlastname:'',        
+        first_name:'',
+        last_name:'',        
         password: ''
     };
 
@@ -23,7 +23,7 @@ export class LoginComponent {
     constructor(private http: HttpClient) {} // Necesitamos el constructor para capturar el HttpClient y poder realizar las solicitudes
 
   registroForm() {
-    this.http.post('http://localhost:8000/login/', this.registrar) //Ponemos la ruta de donde cogemos los datos
+    this.http.post('http://localhost:8000/login/registrarse', this.registrar) //Ponemos la ruta de donde cogemos los datos
                                                                   //Con userData recogemos la información del usuario que queremos guardar
       .subscribe(response => {
         console.log('Respuesta del servidor:', response);

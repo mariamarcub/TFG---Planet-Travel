@@ -1,30 +1,33 @@
-<h2>BIENVENIDO A TRAVEL PLANET</h2>
-
-
-
-<form (submit)="registroForm()">
-    <label for="username">Nombre:</label>
-    <input type="text" id="username" name="username" [(ngModel)]="registrar.name">
-    <label for="username">Primer apellido:</label>
-    <input type="text" id="lastname" name="lastname" [(ngModel)]="registrar.lastname">
-    <label for="username">Segundo apellido:</label>
-    <input type="text" id="secondlastname" name="secondlastname" [(ngModel)]="registrar.secondlastname">    
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" name="password" [(ngModel)]="registrar.password">
-  
-    <a href="#"><input type="submit" class="botonCrear" value="Registrar Usuario"/></a>
-</form>
-
-
-<form (submit)="iniciarSesionForm()">
-    <label for="username">Nombre:</label>
-    <input type="text" id="username" name="username" [(ngModel)]="iniciarSesion.name">     
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" name="password" [(ngModel)]="iniciarSesion.password">
-  
-    <input type="submit" class="botonIniciarSesion" value="Iniciar Sesión"> 
-
-</form>
+<body>
+    <header>
+        <h2>BIENVENIDO A TRAVEL PLANET</h2>
+    </header>
+    <main>
+        <section>
+            <article class="registro">
+                <form (submit)="registroForm()" id="registroForm" method="post">
+                    <!--Propiedades-->
+                    <input type="text" class="boton" id="username" name="username" [(ngModel)]="registrar.name" placeholder="Nombre">
+                    <input type="text" class="boton" id="first_name" name="first_name" [(ngModel)]="registrar.first_name" placeholder="Primer apellido">
+                    <input type="text" class="boton" id="last_name" name="last_name" [(ngModel)]="registrar.last_name" placeholder="Segundo apellido">
+                    <input type="password" class="boton" id="password" name="password" [(ngModel)]="registrar.password" placeholder="Contraseña">
+                    <!--Botón-->
+                    <a href="#"><input type="submit" class="botonCrear" value="Registrarse"/></a>
+                </form>
+            </article>
+    
+            <article class="iniciar">
+                <form (submit)="iniciarSesionForm()">
+                   
+                    <input type="text" class="boton" id="username" name="username" [(ngModel)]="iniciarSesion.name" placeholder="Nombre">                      
+                    <input type="password" class="boton" id="password" name="password" [(ngModel)]="iniciarSesion.password" placeholder="Contraseña">
+                
+                    <a href="#"><input type="submit" class="botonIniciar" value="Iniciar Sesión"/></a>        
+                </form>        
+            </article>
+        </section>
+    </main>
+</body>
 
 
 <app-footer></app-footer>

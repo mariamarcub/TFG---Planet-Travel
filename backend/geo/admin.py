@@ -2,8 +2,6 @@ from django.contrib import admin
 from .models import City
 from .models import Country
 from .models import Continent
-from .models import Client
-from .models import Card
 from .models import Purchase
 from .models import Voyage
 
@@ -26,15 +24,6 @@ class ContinentAdmin(admin.ModelAdmin):
     search_fields = ['name']
     # list_filter = ['country_continent_name']
     list_display = ['name']
-
-
-@admin.register(Card)
-class CardAdmin(admin.ModelAdmin):
-    search_fields = ['client']
-
-@admin.register(Client)
-class ClientAdmin(admin.ModelAdmin):
-    search_fields = ['user']
 
 
 @admin.register(Purchase)

@@ -34,22 +34,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name_plural': 'Clients',
             },
-        ),
-        migrations.CreateModel(
-            name='Card',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('owner', models.CharField(max_length=30)),
-                ('type', models.CharField(max_length=30)),
-                ('expiration', models.DateField()),
-                ('cvv', models.IntegerField(validators=[geo.models.validate_card])),
-                ('client', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='geo.client')),
-            ],
-            options={
-                'verbose_name_plural': 'Cards',
-                'unique_together': {('type', 'owner')},
-            },
-        ),
+        ),        
         migrations.CreateModel(
             name='Country',
             fields=[
@@ -82,8 +67,8 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('date', models.DateField()),
                 ('price', models.DecimalField(decimal_places=2, max_digits=9)),
-                ('card', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='geo.card')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='geo.client')),
+                ('card', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main.card')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main.client')),
             ],
             options={
                 'verbose_name_plural': 'Purchases',
