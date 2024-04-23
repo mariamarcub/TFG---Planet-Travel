@@ -1,41 +1,35 @@
 from django.contrib.auth import login
-from django.contrib.auth.models import User
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from main.models import Client
-from main.serializers import ClientSerializer
+from main.serializers import ClientRegisterSerializer, LoginSerializer
 
 
 class RegisterAPIView(APIView):
     def post(self, request):
-        # Extraer los datos del cuerpo de la solicitud
-        username = request.data.get('username')
-        first_name = request.data.get('first_name')
-        last_name = request.data.get('last_name')
-        password = request.data.get('password')
-
-        # Validar que se proporcionaron todos los campos necesarios
-        if not username or not first_name or not last_name or not password:
-            return Response({'error': 'All fields are required'}, status=status.HTTP_400_BAD_REQUEST)
-        try:
-            # Crear un nuevo usuario
-            user = User.objects.create_user(username=username,
-                                            first_name=first_name,
-                                            last_name=last_name,
-                                            password=password)
-
-            # Crear un nuevo cliente asociado al usuario
-            client = Client.objects.create(user=user)
+        register_serializer = ClientRegisterSerializer(data=request.data)
+        if register_serializer.is_valid():
+            client = register_serializer.save()
 
             # Autenticar al usuario recién creado
+            login(request, client.user)
+            client_dict = {'Name': client.user.username, 'Email': client.user.email}
+            response = Response(
+                {'success': 'User registered successfully',
+                 'client': client_dict},
+                status=status.HTTP_201_CREATED
+            )
+        else:
+            response = Response({'error': register_serializer.errors},
+                                status=status.HTTP_400_BAD_REQUEST)
+        return response
+
+
+class LoginAPIView(APIView):
+    def post(self, request):
+        serializer = LoginSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.validated_data
             login(request, user)
-
-            # Serializar el nuevo cliente
-            serializer = ClientSerializer(client, many=True)
-
-            return Response({'success': 'User registered successfully', 'client': serializer.data},
-                            status=status.HTTP_201_CREATED)
-
-        except Exception as e:
-            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'message': 'Inicio de sesión exitoso'}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

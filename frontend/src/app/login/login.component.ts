@@ -1,51 +1,42 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http'; //Permite realizar solicitudes via HTTP de tipos get,post,put y delete
-
+import { Component, OnInit } from '@angular/core';
+import { LoginService } from './login.service';
+import { UserLogin, UserRegister } from './login.model';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-    registrar = { //Indicamos los valores que esperamos recibir
-        name: '',
-        first_name:'',
-        last_name:'',        
-        password: ''
-    };
+export class LoginComponent implements OnInit {
+  registrar: UserRegister = new UserRegister('', '', '', '', '', '');
+  iniciarSesion: UserLogin = new UserLogin('', '');
 
-    iniciarSesion = { //Indicamos los valores que esperamos recibir
-      name: '',             
-      password: ''
-  };
+  constructor(private loginService: LoginService) {}
 
-    constructor(private http: HttpClient) {} // Necesitamos el constructor para capturar el HttpClient y poder realizar las solicitudes
+  ngOnInit() {}
 
   registroForm() {
-    this.http.post('http://localhost:8000/login/registrarse', this.registrar) //Ponemos la ruta de donde cogemos los datos
-                                                                  //Con userData recogemos la información del usuario que queremos guardar
-      .subscribe(response => {
+    this.loginService.registrarse(this.registrar).subscribe({
+      next: (response) => {
         console.log('Respuesta del servidor:', response);
-      }, error => {
+      },
+      error: (error) => {
         console.error('Error en la solicitud:', error);
-      });
+      }
+    });
   }
 
   iniciarSesionForm() {
-    this.http.post('http://localhost:8000/login/', this.iniciarSesion) //Ponemos la ruta de donde cogemos los datos
-                                                                  //Con userData recogemos la información del usuario que queremos guardar
-      .subscribe(response => {
+    this.loginService.iniciarSesion(this.iniciarSesion).subscribe({
+      next: (response) => {
         console.log('Respuesta del servidor:', response);
-      }, error => {
+      },
+      error: (error) => {
         console.error('Error en la solicitud:', error);
-      });
+      }
+    });
   }
-
-  
 }
-
-
 
 
 

@@ -7,10 +7,12 @@
             <article class="registro">
                 <form (submit)="registroForm()" id="registroForm" method="post">
                     <!--Propiedades-->
-                    <input type="text" class="boton" id="username" name="username" [(ngModel)]="registrar.name" placeholder="Nombre">
-                    <input type="text" class="boton" id="first_name" name="first_name" [(ngModel)]="registrar.first_name" placeholder="Primer apellido">
-                    <input type="text" class="boton" id="last_name" name="last_name" [(ngModel)]="registrar.last_name" placeholder="Segundo apellido">
+                    <input type="text" class="boton" id="username" name="username" [(ngModel)]="registrar.username" placeholder="Usuario">
+                    <input type="text" class="boton" id="first_name" name="first_name" [(ngModel)]="registrar.first_name" placeholder="Nombre">
+                    <input type="text" class="boton" id="last_name" name="last_name" [(ngModel)]="registrar.last_name" placeholder="Apellido">
                     <input type="password" class="boton" id="password" name="password" [(ngModel)]="registrar.password" placeholder="Contraseña">
+                    <input type="password" class="boton" id="password" name="password" [(ngModel)]="registrar.password2" placeholder="Contraseña 2">
+                    <input type="email" class="boton" id="email" name="email" [(ngModel)]="registrar.email" placeholder="Email">
                     <!--Botón-->
                     <a href="#"><input type="submit" class="botonCrear" value="Registrarse"/></a>
                 </form>
@@ -18,10 +20,10 @@
     
             <article class="iniciar">
                 <form (submit)="iniciarSesionForm()">
-                   
-                    <input type="text" class="boton" id="username" name="username" [(ngModel)]="iniciarSesion.name" placeholder="Nombre">                      
+
+                    <input type="text" class="boton" id="username" name="username" [(ngModel)]="iniciarSesion.username" placeholder="Usuario">                      
                     <input type="password" class="boton" id="password" name="password" [(ngModel)]="iniciarSesion.password" placeholder="Contraseña">
-                
+
                     <a href="#"><input type="submit" class="botonIniciar" value="Iniciar Sesión"/></a>        
                 </form>        
             </article>

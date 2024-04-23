@@ -3,7 +3,7 @@ from django.urls import path, include
 from rest_framework import routers
 
 from geo.urls import geo_urls
-from main.views import RegisterAPIView
+from main.views import RegisterAPIView, LoginAPIView
 
 router = routers.DefaultRouter()
 
@@ -14,6 +14,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('', include(geo_urls)),
     path('login/registrarse/', RegisterAPIView.as_view(), name='registro'),
-    ]
+    path('login/', LoginAPIView.as_view(), name='login'),
+]
 
 urlpatterns += router.urls
