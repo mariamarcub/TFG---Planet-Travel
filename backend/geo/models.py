@@ -1,3 +1,4 @@
+
 from django.db import models
 from main.models import Client, Card
 
@@ -5,7 +6,7 @@ from main.models import Client, Card
 class Continent(models.Model):
     name = models.CharField(max_length=200)
 
-    def _str_(self):
+    def __str__(self):
         return f"{self.name}"
 
     class Meta:
@@ -20,8 +21,8 @@ class Country(models.Model):
     num_code = models.IntegerField()
     continent = models.ForeignKey(Continent, on_delete=models.CASCADE, null=True)
 
-    def _str_(self):
-        return f"{self.name}"
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name_plural = "Countries"
@@ -35,35 +36,40 @@ class City(models.Model):
     country = models.ForeignKey(Country, on_delete=models.CASCADE, null=True)
 
 
-    def _str_(self):
+    def __str__(self):
         return f"{self.name} - {self.country.name}"
 
     class Meta:
         verbose_name_plural = "Cities"
 
 
-#MODELO COMPRA
-class Purchase(models.Model):
-    user = models.ForeignKey(Client, on_delete=models.CASCADE)
-    card = models.ForeignKey(Card, on_delete=models.CASCADE)
-    date = models.DateField()
-    price = models.DecimalField(max_digits=9, decimal_places=2)
-
-    def _str_(self):
-        return f"{self.user.user.username} - {self.card.owner} - {self.date} - {self.price}"
-
-    class Meta:
-        verbose_name_plural = "Purchases"
-
 #MODELO VIAJE
 class Voyage(models.Model):
-    user = models.ForeignKey(Client, on_delete=models.CASCADE)
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
-    date = models.DateField()
+    #user = models.ForeignKey(Client, on_delete=models.CASCADE)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE, default=1)
+    date_start = models.DateField()
+    date_end = models.DateField()
+    description = models.TextField(default="Resumen")
     itinerary = models.TextField(default='Itinerario predeterminado.')
-
-    def _str_(self):
-        return f"{self.user.user.username} - {self.city.name} - {self.date}"
+    price = models.DecimalField(max_digits=9, decimal_places=2)
+    maximun_travelers = models.IntegerField()
+    def __str__(self):
+        return f"{self.country.name} - {self.date_start} - {self.date_end}"
 
     class Meta:
         verbose_name_plural ="Voyages"
+
+
+
+#MODELO COMPRA
+class Purchase(models.Model):
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    card = models.ForeignKey(Card, on_delete=models.CASCADE)
+    date = models.DateField()
+    voyage = models.ForeignKey(Voyage, on_delete=models.CASCADE, default=None)
+
+    def __str__(self):
+        return f"{self.client.user.username} - {self.card.owner} - {self.date}"
+
+    class Meta:
+        verbose_name_plural = "Purchases"

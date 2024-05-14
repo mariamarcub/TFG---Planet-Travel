@@ -63,3 +63,9 @@ class LoginSerializer(serializers.Serializer):
         if user:
             return user
         raise ValidationError("Credenciales incorrectas")
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Client
+        fields = '__all__'

@@ -41,13 +41,15 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
 
-CORS_ALLOW_ALL_ORIGINS = True
+CSRF_TRUSTED_ORIGINS = ['http://localhost:4200']
 
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:4200',
-# ]
+CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOWED_HEADERS = ['content-type', 'x-csrftoken']
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:4200',
+]
+
+CORS_ALLOWED_HEADERS = ['content-type', 'x-csrftoken', 'Content-Type']
 CORS_EXPOSED_HEADERS = ['Custom-Header']
 
 
@@ -61,9 +63,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'rest_framework',
+    'rest_framework.authtoken',
     'main',
     'geo',
-    'rest_framework',
+    'forum',
+
 ]
 
 MIDDLEWARE = [
@@ -76,6 +81,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',  # Permite el manejo de mensajes en la sesión
     'django.middleware.clickjacking.XFrameOptionsMiddleware',  # Protección contra clickjacking
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
+
 
 ROOT_URLCONF = 'main.urls'
 
@@ -139,6 +152,12 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+CSRF_TRUSTED_ORIGINS = ['http://localhost:4200']
+SESSION_COOKIE_SAMESITE = 'None'
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/

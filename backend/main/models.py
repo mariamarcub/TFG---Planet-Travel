@@ -7,7 +7,7 @@ from django.conf import settings
 class Client(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
-    def _str_(self):
+    def __str__(self):
         return f"{self.user.username}"
 
     class Meta:
@@ -28,7 +28,7 @@ class Card(models.Model):
     expiration = models.DateField()
     cvv = models.IntegerField(validators=[validate_card])
 
-    def _str_(self):
+    def __str__(self):
         return f'{self.owner} - {self.type} - {self.expiration}'  # Son las que me interesa sacar y así no sale la misma información repetida
 
     class Meta:

@@ -6,6 +6,7 @@ from .models import Purchase
 from .models import Voyage
 
 
+
 @admin.register(City)
 class CityAdmin(admin.ModelAdmin):
     search_fields = ['name']
@@ -33,4 +34,9 @@ class PurchaseAdmin(admin.ModelAdmin):
 
 @admin.register(Voyage)
 class VoyageAdmin(admin.ModelAdmin):
-    search_fields = ['user', 'city__name', 'date', 'itinerary']
+    search_fields = ['country__name', 'date', 'itinerary']
+    list_display = ['get_country_name']
+    def get_country_name(self, obj):
+        return obj.country.name if obj.country else ''  # Si el país está definido, devuelve su nombre; de lo contrario, devuelve una cadena vacía
+
+    get_country_name.short_description = 'Country'  # Esto define cómo se mostrará el nombre de la columna en el admin
