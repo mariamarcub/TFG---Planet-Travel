@@ -1,0 +1,34 @@
+<app-cabecera></app-cabecera>
+<div class="contenedor" *ngIf="voyages.length > 0">
+  <h2>Viajes del Mes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>País</th>
+        <th>Fecha Inicio</th>
+        <th>Fecha Fin</th>
+        <th>Itinerario</th>
+        <th>Precio</th>
+        <th>Máximo de Viajeros</th>
+        <th></th> <!-- Botón vacío para el botón de mostrar información del viaje -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let voyage of voyages">
+        <td class="pais">{{ voyage.country__name }}</td>
+        <td class="fecha">Desde el {{ voyage.date_start | date:'d' }} de {{ voyage.date_start | date:'MMMM' }} del {{ voyage.date_start | date:'yyyy' }}</td>
+        <td class="fecha">Hasta el {{ voyage.date_end | date:'d' }} de {{ voyage.date_end | date:'MMMM' }} del {{ voyage.date_end | date:'yyyy' }}</td>
+        <td class="itinerario">{{ voyage.itinerary }}</td>
+        <td class="precio">{{ voyage.price | currency:'EUR' }}</td>
+        <td class="maxviajeros">{{ voyage.maximum_travelers }}</td>
+        <td><button (click)="viewVoyage(voyage.id)">Ver viaje</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="contenedor2" *ngIf="voyages.length === 0">
+  <ng-container *ngFor="let mes of mesesDisponibles">
+    <p class="no-voyages">No hay viajes disponibles para {{ mes | date:'MMMM' }}</p>
+  </ng-container>
+</div>
+<app-footer></app-footer>

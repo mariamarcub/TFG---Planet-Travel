@@ -1,0 +1,77 @@
+
+.contenedor {
+    margin-top: 8%; /* Ajusta este valor según la altura de tu cabecera */
+    margin-bottom: 10%; /* Ajusta este valor según la altura de tu footer */
+       
+}
+
+h2{
+    font-size: 300%;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: underline;
+    background: linear-gradient(#1B8D06,#A7E02C);
+    -webkit-background-clip: text;
+    color: transparent;
+            
+}
+
+.contenedor table {
+    border-collapse: collapse;
+    width: 85%;
+    margin: 0 auto; /* Centra la tabla horizontalmente */
+}
+  
+.contenedor th {
+    border-bottom: 1px solid #ddd; /* Borde inferior en todas las celdas */
+    padding: 20px;
+    text-align: left;
+    text-transform: uppercase; /* Convertir el texto a mayúsculas */
+    color: rgb(153, 153, 153);
+}
+
+.contenedor td {
+    border-bottom: 1px solid #ddd; /* Borde inferior en todas las celdas */
+    padding: 20px;
+    text-align: left;
+}
+
+/* Ocultar borde inferior en la última fila */
+.contenedor .last td {
+    border-bottom: none;
+}
+  
+  
+th{
+    font-size: 120%;
+}
+
+.pais{
+    text-transform: uppercase; /* Convertir el texto a mayúsculas */
+    font-weight: bolder;
+}
+
+.precio{
+    font-size: 120%;
+    color:#dd751f;
+    font-weight: bolder;
+}
+
+button{
+    background: rgb(252, 234, 144);
+    border: 3px black solid;
+    color: rgb(0, 0, 0);
+    font-size: 130%;
+    font-weight: bolder;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    width: 110%;
+}
+
+
+.no-voyages{
+    margin-top: 18%;
+    text-align: center;
+    font-size: 50px;
+    color: rgb(153, 153, 153);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

@@ -1,0 +1,49 @@
+.contenedor {
+    margin-top: 8%; /* Ajusta este valor según la altura de tu cabecera */
+    margin-bottom: 10%; /* Ajusta este valor según la altura de tu footer */
+       
+}
+
+h2{
+    font-size: 300%;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: underline;
+    background: linear-gradient(#ff00b3, #fff585);
+    -webkit-background-clip: text;
+    color: transparent;  
+    
+}
+
+h3{
+    font-weight: bolder;
+    font-size: 25px;
+    margin-left: 5%;
+    color: rgb(253, 85, 152);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+
+}
+.resumen{
+    width: 40%;
+    font-family: 'Comic Sans Ms';
+    margin-left: 5%;
+    line-height: 2.0; /* Ajusta el espacio entre líneas según tus preferencias */
+    text-align: justify;
+}
+
+.fechaInicio, .fechaFin{
+    width: 40%;
+    font-family: 'Comic Sans Ms';
+    line-height: 1.0; /* Ajusta el espacio entre líneas según tus preferencias */
+    text-align: justify;
+    display: inline-flex;
+    
+
+}
+
+.despegue, .aterrizaje{
+    width: 30px;
+    margin-left: 5%;
+
+}

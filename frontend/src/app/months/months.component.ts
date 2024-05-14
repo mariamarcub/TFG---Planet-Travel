@@ -1,6 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import { MonthsService } from './months.service';
 import { Months } from './months.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { Months } from './months.model';
 export class MonthsComponent implements OnInit {
   months: Months[] = [];
 
-  constructor(private MonthsService: MonthsService) {}
+  constructor(private MonthsService: MonthsService, private router: Router) {}
 
   ngOnInit() {
     this.MonthsService.getMonths().subscribe({
@@ -24,4 +25,8 @@ export class MonthsComponent implements OnInit {
       }
     });
   }
+
+  viewVoyagesMonth(month_id: number){
+    this.router.navigate(['/monthTrips', month_id]) /*Me dirige a la ruta deseada*/
+  }
 }

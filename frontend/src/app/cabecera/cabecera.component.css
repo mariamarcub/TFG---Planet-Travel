@@ -17,8 +17,9 @@ header {
 
 
 nav{
-    background: rgba(255, 255, 255, 0.674);   
-    width: 100%;    
+    background: rgb(225, 254, 208);   
+    width: 100%; 
+    height: 90px;   
     position: fixed;
     z-index: 2;
     padding-bottom: 10px;
@@ -38,11 +39,6 @@ nav ul .derecha{
 }
 
 
-nav ul .izquierda{
-    width: 70%;
-
-}
-
 nav ul .derecha li{
     display: inline-block;
     color:blue;
@@ -57,23 +53,87 @@ nav ul .derecha li a{
     font-size: 30px;
 }
 
-nav ul .izquierda li{
+
+/*NO AUTENTIFICADO*/
+
+nav ul .izquierdaNoautentificado{
+    width: 70%;
+
+}
+
+
+nav ul .izquierdaNoautentificado li{
     display: inline-block;
-    padding-left: 100px;
+    padding-left: 50px;
    
 
 }
 
+nav ul .izquierdaNoautentificado li a{
+    display: inline-block;
+    color:rgb(0, 0, 0);
+    font-weight: bolder;
+    font-size: 20px;
+    margin-top: 25%;
+
+}
+
+nav ul .izquierdaNoautentificado li p{
+    display: inline-block;
+    color:rgb(0, 0, 0);
+    padding-left: 60px;
+    font-weight: bolder;
+    font-size: 25px;
+    margin-top: 0%;
+
+}
+
+
+
+/*SI AUTENTIFICADO*/
+
+nav ul .izquierda{
+    width: 70%;
+
+}
+
+
+nav ul .izquierda li{
+    display: inline-block;
+    padding-left: 50px;
+   
+
+}
 
 nav ul .izquierda li a{
     display: inline-block;
     color:rgb(0, 0, 0);
-    padding-left: 20px;
     font-weight: bolder;
     font-size: 20px;
-    margin-top: 20%;
+    margin-top: 25%;
 
 }
+
+nav ul .izquierda li p{
+    display: inline-block;
+    color:rgb(8, 90, 1);
+    padding-left: 10px;
+    font-weight: bolder;
+    font-size: 20px;
+    margin-top: 0%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+
+}
+
+
+#logout{
+    padding-left: 10px;
+    text-decoration: underline;
+    cursor: pointer;
+
+}
+
 
 
 /* Submenú de fechas */
@@ -120,6 +180,7 @@ nav ul .izquierda li a{
     text-align: center;  
     border-radius: 10px; /* Añadir bordes redondeados */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Añadir sombra */
+    cursor: pointer;
 
 }
 
@@ -159,14 +220,6 @@ nav ul .izquierda li a{
 
 }
 
-
-.foro{
-    width: 100%;
-    height: 580px;
-    position: relative;
-    z-index: 1;
-
-}
 
 
 

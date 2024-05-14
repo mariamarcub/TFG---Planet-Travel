@@ -1,0 +1,18 @@
+<app-cabecera></app-cabecera>
+<div class="contenedor">
+    <h2>Viaje por {{ voyage.country_name }}</h2>
+    <h3>Sumérgete en la aventura</h3>
+    <p class="resumen">{{ voyage.description }}</p>
+    <h3>Fecha del viaje</h3>
+    <div>
+        <img src="./assets/despegue.png" alt="" class="despegue">
+        <p class="fechaInicio">Desde el {{ voyage.voyage_date_start | date:'d'}} de {{ voyage.voyage_date_start | date:'MMMM'}}</p>
+    </div>
+    <div>
+        <img src="./assets/aterrizaje.png" alt="" class="aterrizaje">
+        <p class="fechaFin">Hasta el {{ voyage.voyage_date_end | date:'d'}} de {{ voyage.voyage_date_end | date:'MMMM'}}</p>
+    </div>
+    <p class="itinerario">{{ voyage.voyage_info }}</p>
+    <p class="precio">{{ voyage.voyage_price }}</p>
+</div>
+<app-footer></app-footer>

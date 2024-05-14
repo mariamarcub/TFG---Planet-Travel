@@ -6,38 +6,74 @@
                     <a href="#" class="header__a">PLANET TRAVEL<img src="./assets/logo.png" alt="" class="logo"></a>
                 </li>
             </div>
-            <div class="izquierda">
-                <li class="header__li">
-                    <a href="#" class="header__a">FECHA</a>
-                    <div class="dropdown-content-months">
-                        <!-- Contenido del submenú de fechas -->
-                        <app-months></app-months> 
-                    </div>
-                </li>
-                <li class="header__li">
-                    <a href="#" class="header__a">DESTINO</a>
-                    <div class="dropdown-content-continent">
-                        <!-- Contenido del submenú de destinos -->
-                        <app-continent></app-continent> 
-                    </div>
-                </li>
-                <li class="header__li">
-                    <a href="#" class="header__a">GRUPO DE EDAD</a>
-                    <div class="dropdown-content-ageGroup">
-                        <!-- Contenido del submenú de destinos -->
-                        <app-age-group></app-age-group> 
-                    </div>
-                </li>
-                <li class="header__li">
-                    <a routerLink="/login" class="header__a">LOGIN IN</a>
-                </li>
-            </div>
+            <!-- Elementos para usuario autenticado -->
+            <ng-container *ngIf="isAuthenticated" class="autentificado">
+                <div class="izquierda">                
+                    <li class="header__li">
+                        <a href="#" class="header__a">FECHA</a>
+                        <div class="dropdown-content-months">
+                            <!-- Contenido del submenú de fechas -->
+                            <app-months></app-months> 
+                        </div>
+                    </li>
+                    <li class="header__li">
+                        <a href="#" class="header__a">DESTINO</a>
+                        <div class="dropdown-content-continent">
+                            <!-- Contenido del submenú de destinos -->
+                            <app-continent></app-continent> 
+                        </div>
+                    </li>
+                    <li class="header__li">
+                        <a href="#" class="header__a">GRUPO DE EDAD</a>
+                        <div class="dropdown-content-ageGroup">
+                            <!-- Contenido del submenú de grupos de edad -->
+                            <app-age-group></app-age-group> 
+                        </div>
+                    </li>
+                    <li class="header__li">
+                        <a routerLink="/profile" class="header__a">PROFILE</a>
+                    </li>
+                    <li class="header__li">
+                        <a (click)="logout()" class="header__a" id="logout">LOG OUT</a>
+                    </li>
+                    <li class="header__li">
+                        <p class="header__a">Bienvenid@ {{username}}</p>
+                    </li>
+                </div>
+            </ng-container>
+
+            <!-- Elementos para usuario no autenticado -->
+            <ng-container *ngIf="!isAuthenticated" class="noautentificado">   
+                <div class="izquierdaNoautentificado">
+                    <li class="header__li">
+                        <a href="#" class="header__a">FECHA</a>
+                        <div class="dropdown-content-months">
+                            <!-- Contenido del submenú de fechas -->
+                            <app-months></app-months> 
+                        </div>
+                    </li>
+                    <li class="header__li">
+                        <a href="#" class="header__a">DESTINO</a>
+                        <div class="dropdown-content-continent">
+                            <!-- Contenido del submenú de destinos -->
+                            <app-continent></app-continent> 
+                        </div>
+                    </li>
+                    <li class="header__li">
+                        <a href="#" class="header__a">GRUPO DE EDAD</a>
+                        <div class="dropdown-content-ageGroup">
+                            <!-- Contenido del submenú de destinos -->
+                            <app-age-group></app-age-group> 
+                        </div>
+                    </li>
+                    <li class="header__li">
+                        <a routerLink="/login" class="header__a">LOGIN IN</a>
+                    </li>
+                </div>                 
+                
+            </ng-container>                
         </ul>
     </nav>
-
-    <div class="imagenes">
-        <img src="./assets/foro.jpg" alt="" class="foro">
-    </div>
+    <app-body *ngIf="mostrarBody"></app-body> <!--Solo debe aparecer la foto en el index-->   
 </header>
 <app-footer></app-footer>
-

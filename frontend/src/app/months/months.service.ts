@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Months } from './months.model'; /*Referenciamos al models del componente*/
+import { Months } from './months.model'; /Referenciamos al models del componente/
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +13,5 @@ export class MonthsService {
 
   getMonths(): Observable<Months[]> {
     return this.http.get<Months[]>(this.apiUrl);
-  }
+  }
 }

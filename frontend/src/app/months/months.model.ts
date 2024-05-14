@@ -1,3 +1,4 @@
 export interface Months {
-    date: Date;
+    id: number;
+    date: Date;
 }

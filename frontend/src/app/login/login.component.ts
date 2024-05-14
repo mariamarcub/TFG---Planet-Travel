@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import { UserLogin, UserRegister } from './login.model';
 
@@ -7,11 +8,12 @@ import { UserLogin, UserRegister } from './login.model';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  registrar: UserRegister = new UserRegister('', '', '', '', '', '');
-  iniciarSesion: UserLogin = new UserLogin('', '');
 
-  constructor(private loginService: LoginService) {}
+export class LoginComponent implements OnInit {
+  registrar: UserRegister = new UserRegister();
+  iniciarSesion: UserLogin = new UserLogin();
+
+  constructor(private loginService: LoginService, private router: Router) {}
 
   ngOnInit() {}
 
@@ -30,6 +32,9 @@ export class LoginComponent implements OnInit {
     this.loginService.iniciarSesion(this.iniciarSesion).subscribe({
       next: (response) => {
         console.log('Respuesta del servidor:', response);
+        if (response && response.token) {
+          this.router.navigate(['']);
+        }
       },
       error: (error) => {
         console.error('Error en la solicitud:', error);
