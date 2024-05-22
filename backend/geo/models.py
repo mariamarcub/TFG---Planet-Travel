@@ -1,4 +1,3 @@
-
 from django.db import models
 from main.models import Client, Card
 
@@ -46,30 +45,46 @@ class City(models.Model):
 #MODELO VIAJE
 class Voyage(models.Model):
     #user = models.ForeignKey(Client, on_delete=models.CASCADE)
-    country = models.ForeignKey(Country, on_delete=models.CASCADE, default=1)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, default=1)
     date_start = models.DateField()
     date_end = models.DateField()
     description = models.TextField(default="Resumen")
     itinerary = models.TextField(default='Itinerario predeterminado.')
     price = models.DecimalField(max_digits=9, decimal_places=2)
-    maximun_travelers = models.IntegerField()
+    maximum_travelers = models.IntegerField()
+
     def __str__(self):
-        return f"{self.country.name} - {self.date_start} - {self.date_end}"
+        return f"{self.city.name} - {self.date_start} - {self.date_end}"
 
     class Meta:
-        verbose_name_plural ="Voyages"
-
+        verbose_name_plural = "Voyages"
 
 
 #MODELO COMPRA
 class Purchase(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
-    card = models.ForeignKey(Card, on_delete=models.CASCADE)
-    date = models.DateField()
-    voyage = models.ForeignKey(Voyage, on_delete=models.CASCADE, default=None)
+    card = models.ForeignKey(Card, on_delete=models.CASCADE, null=True)
+    date = models.DateTimeField(auto_now_add=True)
+    voyage = models.ForeignKey(Voyage, on_delete=models.CASCADE, default=None, null=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=5, null=True)
+
 
     def __str__(self):
-        return f"{self.client.user.username} - {self.card.owner} - {self.date}"
+        return f"{self.client.user.username} - {self.amount} - {self.date}"
 
     class Meta:
         verbose_name_plural = "Purchases"
+
+
+#MODELO DE VIAJEROS
+class Voyager(models.Model):
+    name = models.CharField(max_length=32)
+    last_name = models.CharField(max_length=32)
+    second_surname = models.CharField(max_length=32)
+    email = models.CharField()
+    birth_date = models.DateField()
+    telephone = models.CharField(max_length=16)
+    dni = models.CharField(max_length=16, null=True)
+    passport = models.CharField(max_length=16, null=True)
+    departure_city = models.ForeignKey(City, on_delete=models.CASCADE)
+    purchase = models.ForeignKey(Purchase, on_delete=models.CASCADE)

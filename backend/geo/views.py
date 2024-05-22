@@ -1,13 +1,20 @@
-# views.py
+from django.conf import settings
+from django.db import transaction
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+import stripe
 
 from main.models import Card, Client
 from .models import Country, Continent, Voyage, Purchase
-from .serializers import CountrySerializer, ContinentSerializer, MonthSerializer, AgeGroupSerializer, VoyageSerializer
+from .serializers import CountrySerializer, ContinentSerializer, MonthSerializer, AgeGroupSerializer, VoyageSerializer, \
+    VoyagerSerializer
+
+
+stripe.api_key = 'sk_test_51PIvXSGtzfLtviFbRhm1TMvJ4XiMdV2URKIwZsKtGFvy6oHVGGc3I0wpTQRcVDthyDV64iDlGhq0kneZ6o07lClD00yU38cBcW'
 
 
 #OBTENER LOS MESES DEL AÑO
@@ -15,7 +22,7 @@ class MonthAPIView(APIView):
     def get(self, request):
         # Obtener los meses disponibles en los viajes
         #meses = Voyage.objects.annotate(month=ExtractMonth('date')).values_list('month', flat=True).distinct()
-
+        print('a')
         # Mapear los números de mes a sus nombres en español
         meses_dict = {
             1: 'Enero',
@@ -102,13 +109,13 @@ class AgeGroupAPIView(APIView):
 
 
 
-
 #VISUALIZAR LOS VIAJES DEL MES SELECCIONADO
 class MonthVoyageAPIView(APIView):
     def get(self, request, month):
         # Obtén el diccionario de meses desde la clase anterior
         voyages = Voyage.objects.filter(date_start__month=month).values(
-            'id', 'country__name', 'date_start', 'date_end', 'description', 'itinerary', 'price', 'maximun_travelers'
+            'id', 'city__name', 'date_start', 'date_end', 'description',
+            'itinerary', 'price', 'maximum_travelers'
         )
         voyages_list = list(voyages)
         if len(voyages) > 0:
@@ -123,33 +130,49 @@ class ShowVoyageInfoAPIView(APIView):
         voyage = get_object_or_404(Voyage, pk=voyage_id)
         if voyage:
             data = {
+                'voyage_id': voyage.id,
                 'voyage_info': voyage.itinerary,
                 'voyage_date_start': voyage.date_start,
                 'voyage_date_end': voyage.date_end,
                 'description': voyage.description,
-                'country_name': voyage.country.name,
+                'city_name': voyage.city.name,
+                'city_latitude': voyage.city.latitude,
+                'city_longitude': voyage.city.longitude,
                 'voyage_price': voyage.price,
-                'voyage_maximum_travelers': voyage.maximun_travelers
+                'voyage_maximum_travelers': voyage.maximum_travelers
             }
             return Response(data, status=status.HTTP_200_OK)
         return Response({'Error': 'Voyage not found'}, status=status.HTTP_404_NOT_FOUND)
 
-
 #CREAR EL PROCESO DE COMPRA
 class PurchaseAPIView(APIView):
     permission_classes = [IsAuthenticated]
+
+    @transaction.atomic
     def post(self, request):
-        voyage_id = request.POST['voyage']
-        card_id = request.POST['card']
-        voyage = get_object_or_404(Voyage, pk=voyage_id)
-        card = get_object_or_404(Card, pk=card_id)
-        user = request.user
-        purchase = Purchase.objects.create(
-            user=user,
-            card=card,
-            voyage=voyage
-        )
-        return Response({'message': f'Purchase created:{purchase.voyage.itinerary}'})
+        serializer = VoyagerSerializer(data=request.data)
+        if serializer.is_valid():
+            voyage_id = request.data.get('voyageId')
+            voyage = get_object_or_404(Voyage, pk=voyage_id)
+            card = Card.objects.filter(client__user=request.user).first()
+            client = Client.objects.filter(user=request.user).first()
+            purchase = Purchase.objects.create(
+                client=client,
+                card=card,
+                voyage=voyage,
+                amount=voyage.price,
+            )
+            charge = stripe.Charge.create(
+                amount=int(purchase.amount * 100),
+                currency='eur',
+                description=f'Pago de {request.user.username} date {timezone.now()}',
+                source=request.data.get('stripeToken')
+            )
+
+            return Response({'message': f'Purchase created: {purchase.voyage.itinerary}',
+                             'stripe_message': charge.status}, status=201)
+        else:
+            return Response(serializer.errors, status=400)
 
 
 #CONFIRMAR LA COMPRA

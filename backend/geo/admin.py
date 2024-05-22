@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import City
+from .models import City, Voyager
 from .models import Country
 from .models import Continent
 from .models import Purchase
@@ -29,14 +29,18 @@ class ContinentAdmin(admin.ModelAdmin):
 
 @admin.register(Purchase)
 class PurchaseAdmin(admin.ModelAdmin):
-    search_fields = ['user', 'card']
-
+    search_fields = ['client', 'card']
 
 @admin.register(Voyage)
 class VoyageAdmin(admin.ModelAdmin):
-    search_fields = ['country__name', 'date', 'itinerary']
-    list_display = ['get_country_name']
-    def get_country_name(self, obj):
-        return obj.country.name if obj.country else ''  # Si el país está definido, devuelve su nombre; de lo contrario, devuelve una cadena vacía
+    search_fields = ['city__name', 'date', 'itinerary']
+    list_display = ['get_city_name']
+    def get_city_name(self, obj):
+        return obj.city.name if obj.city else ''  # Si el país está definido, devuelve su nombre; de lo contrario, devuelve una cadena vacía
 
-    get_country_name.short_description = 'Country'  # Esto define cómo se mostrará el nombre de la columna en el admin
+    get_city_name.short_description = 'City'  # Esto define cómo se mostrará el nombre de la columna en el admin
+
+
+@admin.register(Voyager)
+class VoyagerAdmin(admin.ModelAdmin):
+    search_fields = ['name', 'last_name', 'first_name']
