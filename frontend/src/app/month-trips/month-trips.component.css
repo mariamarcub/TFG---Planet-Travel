@@ -1,11 +1,6 @@
 
-.contenedor {
-    margin-top: 8%; /* Ajusta este valor según la altura de tu cabecera */
-    margin-bottom: 10%; /* Ajusta este valor según la altura de tu footer */
-       
-}
-
-h2{
+h2{ 
+    margin-top:2.5em;
     font-size: 300%;
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -18,10 +13,10 @@ h2{
 
 .contenedor table {
     border-collapse: collapse;
-    width: 85%;
+    width: 90vw;
     margin: 0 auto; /* Centra la tabla horizontalmente */
 }
-  
+
 .contenedor th {
     border-bottom: 1px solid #ddd; /* Borde inferior en todas las celdas */
     padding: 20px;
@@ -40,7 +35,6 @@ h2{
 .contenedor .last td {
     border-bottom: none;
 }
-  
   
 th{
     font-size: 120%;
@@ -66,7 +60,6 @@ button{
     font-family:Georgia, 'Times New Roman', Times, serif;
     width: 110%;
 }
-
 
 .no-voyages{
     margin-top: 18%;

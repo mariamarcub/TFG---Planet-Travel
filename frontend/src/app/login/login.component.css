@@ -18,6 +18,7 @@ section{
     padding: 5px;
     justify-content: center;
     width: 100%;
+    margin-top: 30px;
 }
 
 /*Article Izquierdo y Article Derecho*/
@@ -50,31 +51,9 @@ section{
     align-items: center; /* Centra los elementos horizontalmente */
 }
 
-form .boton {
-    display: block;
-    font-size: 80%;    
-    width: 60%;
-    height: 30px ;
-    margin-top: 20px;
-}
 
-.botonCrear, .botonIniciar{
-    width: 150%;
-    height: 30px ;
-    margin-top: 20px;
-    margin-bottom: 10px;    
-    font-weight: bolder;
-    background-color: rgb(0, 0, 0);
-    color: white;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
- 
+/* Cambiar el color de la sombra cuando se enfoca un campo de entrada */
+.form-control:focus {
+    border-color: #fffcaa; /* Cambia el color del borde */
+    box-shadow: 0 0 0 0.2rem rgb(255, 205, 105); /* Cambia el color y la intensidad de la sombra */
 }
-
-.botonCrear{
-    margin-left: 72%;
-}
-
-.botonIniciar{
-    margin-left: 47%;
-}
-

@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { MonthTripsComponent } from './month-trips/month-trips.component';
 import { ProfileComponent } from './profile/profile.component';
 import { VoyageComponent } from './voyage/voyage.component';
+import { BookingComponent } from './booking/booking.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'monthTrips/:month', component: MonthTripsComponent },//Definimos la ruta para poder visualizar los viajes por meses
   { path: 'profile', component: ProfileComponent },
   { path: 'showVoyage/:voyage', component: VoyageComponent },
+  { path: 'bookingVoyage/:voyage', component: BookingComponent },
 ];
 
 

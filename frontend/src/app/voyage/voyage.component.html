@@ -1,18 +1,67 @@
 <app-cabecera></app-cabecera>
-<div class="contenedor">
-    <h2>Viaje por {{ voyage.country_name }}</h2>
-    <h3>Sumérgete en la aventura</h3>
-    <p class="resumen">{{ voyage.description }}</p>
-    <h3>Fecha del viaje</h3>
-    <div>
-        <img src="./assets/despegue.png" alt="" class="despegue">
-        <p class="fechaInicio">Desde el {{ voyage.voyage_date_start | date:'d'}} de {{ voyage.voyage_date_start | date:'MMMM'}}</p>
+<div class="caja">
+    <h2>Viaje por {{ voyage.city_name }}</h2>
+
+    <div class="superior"> 
+        <div class="contenedor1">
+            <h3>Sumérgete en la aventura</h3>
+            <p class="resumen">{{ voyage.description }}</p>    
+            <h3>Fecha del viaje</h3>
+            <div>
+                <img src="./assets/despegue.png" alt="" class="despegue">
+                <p class="fechaInicio">Desde el {{ voyage.voyage_date_start | date:'d'}} de {{ voyage.voyage_date_start | date:'MMMM'}}</p>
+            </div>
+            <div>
+                <img src="./assets/aterrizaje.png" alt="" class="aterrizaje">
+                <p class="fechaFin">Hasta el {{ voyage.voyage_date_end | date:'d'}} de {{ voyage.voyage_date_end | date:'MMMM'}}</p>
+            </div>
+        </div>
+        
+        <div class="contenedor2">
+            <form>
+                <div class="form-group">
+                    <div class="dias">
+                        {{ voyage.city_name }} {{ totalDays }} días
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Poner Edad del grupo</h5>
+                </div>
+                <div class="form-group">      
+                    <div class="precioInterno">
+                        <p class="total">Total</p><p class="precio">{{ voyage.voyage_price }}€</p>
+                    </div>      
+                </div>
+                <div class="form-group">
+                    <div class="formulario">
+                        <select class="form-control" id="numPersons" name="numPersons" [(ngModel)]="numPersons" #numPersonsCtrl="ngModel">
+                            <option value="" disabled selected>Número de personas</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select> 
+                    </div>
+                                    
+                  </div>  
+                  <div class="boton">
+                    <button type="submit" class="btn btn-primary mt-3" id="reservar" (click)="goToBooking(voyage.voyage_id, voyage.voyage_price, numPersons)">Reservar</button>
+                </div>          
+              </form>
+        </div>
     </div>
-    <div>
-        <img src="./assets/aterrizaje.png" alt="" class="aterrizaje">
-        <p class="fechaFin">Hasta el {{ voyage.voyage_date_end | date:'d'}} de {{ voyage.voyage_date_end | date:'MMMM'}}</p>
+    
+    <div class="inferior">
+        <div class="contenedor3">            
+            <p class="itinerario">{{ voyage.voyage_info }}</p>
+        </div>
+        <div class="contenedor4">
+            <ng-container *ngIf="voyage.city_latitude && voyage.city_longitude">
+                <open-layers-map [latitud]="voyage.city_latitude" [longitud]="voyage.city_longitude"></open-layers-map>
+            </ng-container>
+        </div>
+
     </div>
-    <p class="itinerario">{{ voyage.voyage_info }}</p>
-    <p class="precio">{{ voyage.voyage_price }}</p>
 </div>
 <app-footer></app-footer>

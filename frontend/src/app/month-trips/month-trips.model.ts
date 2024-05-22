@@ -6,7 +6,7 @@ export interface Month {
 
 export class Voyage { /*Se tiene que hacer una clase para poder instanciar cada viaje*/
     id: number = 0;
-    country__name: string = '';
+    city__name: string = '';
     date_start: string = '';
     date_end: string = '';
     description: string = '';

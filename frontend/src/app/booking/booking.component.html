@@ -1,0 +1,67 @@
+<div *ngIf="isDataLoaded" class="container mt-5">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Detalles del Viajero</h3>
+        <p class="card-text">Introduce tus datos tal y como aparecen en tus documentos: estos datos servirán para proseguir con la compra de los servicios y los seguros del viaje. Si los datos no corresponden con los de los documentos, Huakai no se hace responsable. Todos los datos introducidos deben ser correctos, de lo contrario, la reserva podría ser anulada sin derecho al reembolso.</p>
+        
+        <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" formControlName="name" placeholder="Nombre">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input type="text" class="form-control" id="apellido" formControlName="last_name" placeholder="Apellido">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="email">Correo Electrónico</label>
+            <input type="email" class="form-control" id="email" formControlName="email" placeholder="Correo Electrónico">
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="fechaNacimiento">Fecha de Nacimiento</label>
+          <input type="date" class="form-control" id="fechaNacimiento" formControlName="birth_date" placeholder="Fecha de Nacimiento">
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">+34</span>
+            </div>
+            <input type="tel" class="form-control" id="telefono" formControlName="telephone" placeholder="Teléfono">
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="dniPasaporte">DNI</label>
+          <input type="text" class="form-control" id="dniPasaporte" formControlName="dni" placeholder="DNI/Pasaporte">
+        </div>
+        <div class="form-group">
+          <label for="dniPasaporte">Pasaporte</label>
+          <input type="text" class="form-control" id="dniPasaporte" formControlName="passport" placeholder="DNI/Pasaporte">
+        </div>
+        <br>
+          <div class="form-group">
+            <label for="ciudadSalida">Ciudad de Salida</label>
+            <input type="text" class="form-control" id="ciudadSalida" formControlName="departure_city" placeholder="Ciudad de Salida">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="cardElement">Tarjeta de Crédito</label>
+            <div id="card-element" #cardElement class="form-control"></div>
+            <div *ngIf="cardErrors" class="card-errors">{{ cardErrors }}</div>
+          </div>
+          <br>
+          <h2>Total Price: {{ voyagePrice }}</h2>
+          <button type="submit" class="btn btn-primary">Reservar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="!isDataLoaded">
+    <p>Cargando datos...</p>
+  </div>

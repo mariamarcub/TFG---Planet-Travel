@@ -1,9 +1,13 @@
 <header class="header">
-    <nav class="header_nav">
-        <ul class="header__ul">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <ul class="navbar" style="background-color:rgb(225, 254, 208);
+                                 width:100%; height: 130px; position: fixed; z-index: 2; padding-bottom: 10px;">
             <div class="derecha">
-                <li class="header__li">
-                    <a href="#" class="header__a">PLANET TRAVEL<img src="./assets/logo.png" alt="" class="logo"></a>
+                <li class="header__li" style="display: flex; align-items: flex-end; margin-top: 17%;">
+                    <a href="#" class="header__a" style="display: inline-block;">
+                        PLANET TRAVEL
+                        <img src="./assets/logo.png" alt="" class="logo" style="width: 60px; vertical-align: bottom;">
+                    </a>
                 </li>
             </div>
             <!-- Elementos para usuario autenticado -->
@@ -46,7 +50,7 @@
             <ng-container *ngIf="!isAuthenticated" class="noautentificado">   
                 <div class="izquierdaNoautentificado">
                     <li class="header__li">
-                        <a href="#" class="header__a">FECHA</a>
+                        <a href="#" class="nav-item">FECHA</a>
                         <div class="dropdown-content-months">
                             <!-- Contenido del submenú de fechas -->
                             <app-months></app-months> 
