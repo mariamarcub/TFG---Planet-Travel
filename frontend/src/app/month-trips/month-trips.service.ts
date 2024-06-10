@@ -17,7 +17,7 @@ export class MonthTripsService {
       catchError(error => {
         console.error('Error al cargar los viajes del mes', error);
         return of([]); // Devolvemos un arreglo vacío en caso de error
-      })
-    );
-  }
+      })
+    );
+  }
 }

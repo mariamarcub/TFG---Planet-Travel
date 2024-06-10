@@ -1,2 +1,49 @@
 <app-cabecera></app-cabecera>
-<app-footer></app-footer>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <img src="https://via.placeholder.com/150" class="card-img-top rounded-circle mx-auto mt-3"
+          alt="Foto de Perfil" style="width: 150px;">
+        <div class="card-body text-center">
+          <button class="btn btn-dark">Subir Foto</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Información del Perfil</h5>
+          <form [formGroup]="profileForm">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <strong>Nombre Completo:</strong>
+                <input type="text" formControlName="username" class="form-control">
+              </li>
+              <li class="list-group-item">
+                <strong>Primer Apellido:</strong>
+                <input type="text" formControlName="first_name" class="form-control">
+              </li>
+              <li class="list-group-item">
+                <strong>Segundo Apellido:</strong>
+                <input type="text" formControlName="last_name" class="form-control">
+              </li>
+              <li class="list-group-item">
+                <strong>Correo Electrónico:</strong>
+                <input type="email" formControlName="email" class="form-control">
+              </li>
+            </ul>
+            <div class="mt-4">
+              <button type="button" (click)="toggleEditing()" class="btn btn-dark" id="editar">
+                {{ editing ? 'Cancelar' : 'Editar Perfil' }}
+              </button>
+              <button *ngIf="editing" type="button" (click)="saveProfile()" class="btn btn-primary">Guardar Cambios</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

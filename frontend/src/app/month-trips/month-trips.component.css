@@ -13,14 +13,15 @@ h2{
 
 .contenedor table {
     border-collapse: collapse;
-    width: 90vw;
+    width: 80vw;
     margin: 0 auto; /* Centra la tabla horizontalmente */
+    
 }
 
 .contenedor th {
     border-bottom: 1px solid #ddd; /* Borde inferior en todas las celdas */
     padding: 20px;
-    text-align: left;
+    text-align: center;
     text-transform: uppercase; /* Convertir el texto a mayúsculas */
     color: rgb(153, 153, 153);
 }
@@ -28,14 +29,16 @@ h2{
 .contenedor td {
     border-bottom: 1px solid #ddd; /* Borde inferior en todas las celdas */
     padding: 20px;
-    text-align: left;
+    text-align: center;
 }
 
 /* Ocultar borde inferior en la última fila */
 .contenedor .last td {
     border-bottom: none;
 }
-  
+
+
+
 th{
     font-size: 120%;
 }
@@ -67,4 +70,130 @@ button{
     font-size: 50px;
     color: rgb(153, 153, 153);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+/* Contenedor principal que envuelve todo el contenido */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegúrate de que ocupe al menos toda la altura de la ventana */
+  }
+  
+
+/* La parte principal del contenido debe expandirse para llenar el espacio disponible */
+.principal {
+    flex: 1;
+  }
+  
+
+
+
+footer {
+    margin-top: 10%;
+    width: 100%;
+    height: 110px;
+    background-color: #28a745; /* Cambia el color de fondo según tus preferencias */
+    color: #fff; /* Cambia el color del texto según tus preferencias */
+    padding: 10px 0;}
+
+footer a:link,
+a:visited {
+  color: white; /* Define el color de los enlaces sin visitar y visitados */
+  text-decoration: none; /* Quita la subrayado de los enlaces */
+}
+
+
+
+
+
+/*OTRAS RESOLUCIONES DE PANTALLA MÁS PEQUEÑAS*/
+
+
+
+@media only screen and (max-width: 768px) {
+
+
+
+
+    h2{ 
+    margin-top:10%;
+    font-size: 100%;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: underline;
+    background: linear-gradient(#1B8D06,#A7E02C);
+    -webkit-background-clip: text;
+    color: transparent;
+            
+}
+
+.contenedor table {
+        width: 100%; /* Cambia el ancho de la tabla al 100% del ancho del contenedor en dispositivos móviles */
+        margin-top: 20%;
+        overflow-y: auto; /* Agrega una barra de desplazamiento vertical si el contenido desborda el contenedor */
+
+    }
+
+    /* Estilos adicionales para dispositivos móviles */
+    .contenedor th,
+    .contenedor td {
+        padding: 10px; /* Reducir el relleno de las celdas */
+        font-size: 80%; /* Reducir el tamaño de fuente */
+    }
+
+
+.contenedor th {
+    border-bottom: 1px solid #ddd; /* Borde inferior en todas las celdas */
+    padding: 20px;
+    text-align: left;
+    text-transform: uppercase; /* Convertir el texto a mayúsculas */
+    color: rgb(153, 153, 153);
+}
+
+.contenedor td {
+    border-bottom: 1px solid #ddd; /* Borde inferior en todas las celdas */
+    text-align: left;
+}
+
+/* Ocultar borde inferior en la última fila */
+.contenedor .last td {
+    border-bottom: none;
+}
+  
+th{
+    font-size: 60%;
+}
+
+.pais{
+    text-transform: uppercase; /* Convertir el texto a mayúsculas */
+    font-weight: bolder;
+}
+
+.precio{
+    font-size: 80%;
+    color:#dd751f;
+    font-weight: bolder;
+}
+
+button{
+    background: rgb(252, 234, 144);
+    border: 3px black solid;
+    color: rgb(0, 0, 0);
+    font-size: 80%;
+    font-weight: bolder;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    width: 110%;
+}
+
+.no-voyages{
+    margin-top: 40%;
+    text-align: center;
+    font-size: 50px;
+    color: rgb(153, 153, 153);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+
 }

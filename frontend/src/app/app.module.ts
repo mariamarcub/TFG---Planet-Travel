@@ -20,6 +20,12 @@ import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { OpenLayersMapComponent } from './open-layers-map/open-layers-map.component';
 import { BookingComponent } from './booking/booking.component';
+import { DestinyComponent } from './destiny/destiny.component';
+import { ForumComponent } from './forum/forum.component';
+import { IndexComponent } from './index/index.component';
+import { VoyagesClientComponent } from './voyages-client/voyages-client.component';
+import { AgeGroupTripsComponent } from './age-group-trips/age-group-trips.component';
+import { ThreadForumComponent } from './thread-forum/thread-forum.component';
 
 // Registra el idioma español
 registerLocaleData(localeEs);
@@ -44,7 +50,13 @@ const routes: Routes = [
     BodyComponent,
     VoyageComponent,
     OpenLayersMapComponent,
-    BookingComponent
+    BookingComponent,
+    DestinyComponent,
+    ForumComponent,
+    VoyagesClientComponent,
+    IndexComponent,
+    AgeGroupTripsComponent,
+    ThreadForumComponent
   ],
   imports: [
     BrowserModule,

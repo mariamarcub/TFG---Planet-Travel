@@ -1,0 +1,55 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+
+<div class="container mt-5">
+  <h1 class="text-center">Foro</h1>
+  
+  <!-- Botón para abrir el formulario de creación de hilo -->
+  <div class="text-end mb-3">
+    <button class="btn btn-primary" (click)="showCreateThreadForm = true">Crear hilo nuevo</button>
+  </div>
+  
+  <!-- Formulario para crear un nuevo hilo (se muestra cuando pulsamos en el botón Crear Hilo Nuevo) -->
+  <div *ngIf="showCreateThreadForm">
+    <h2>Crear nuevo hilo</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <input type="text" class="form-control" [(ngModel)]="threadTitle" name="threadTitle" id="threadTitle" placeholder="Ingrese el título del hilo" required>
+      </div>        
+      <button type="submit" class="btn btn-primary">Crear hilo</button>
+      <button type="button" class="btn btn-secondary" (click)="showCreateThreadForm = false">Cancelar</button>
+    </form>
+  </div>
+
+  <!-- Lista de hilos existentes (aquí irían los hilos ya creados) -->
+  <div class="mt-5">
+    <h2 class="listado">Listado de hilos</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col" class="cabecera">Título del hilo</th>
+          <th scope="col" class="cabecera">Fecha Creación</th>
+          <th scope="col" class="cabecera">Usuario</th>
+          <th scope="col" class="cabecera">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let thread of activeThreads" class="table-light">
+          <td>{{ thread.title }}</td>
+          <td>{{ thread.created_date | date:'longDate' }}</td>
+          <td>{{ thread.created_by__user__username }}</td>
+          <td>
+            <button class="btn btn-primary me-2" style="background-color: rgb(255, 255, 255); border: 2px blue solid" (click)="accessThread(thread.id)">
+                <img src="./assets/flecha.png" style="width: 40px;"/>
+            </button>
+            <button class="btn btn-danger" style="background-color: rgb(255, 255, 255); border: 2px red solid" (click)="deleteThread(thread.id)">
+                <img src="./assets/papelera.png" style="width: 40px;"/>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

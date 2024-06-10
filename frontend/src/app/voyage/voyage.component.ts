@@ -13,8 +13,7 @@ export class VoyageComponent implements OnInit {
   totalDays: number = 0;
   numPersons: number = 0;
 
-
-  constructor(private service: VoyageService, private navRoute: Router, private route: ActivatedRoute) {}
+  constructor(public service: VoyageService, public navRoute: Router, public route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -38,7 +37,10 @@ export class VoyageComponent implements OnInit {
   }
 
   goToBooking(voyageId: number, voyagePrice: number, numPersons: number) {
-    this.navRoute.navigate([`/bookingVoyage/${voyageId}`, { numPersons: numPersons, voyagePrice: voyagePrice }]);
+    this.navRoute.navigate([`/bookingVoyage/${voyageId}`, { 
+      numPersons: numPersons, 
+      voyagePrice: voyagePrice, 
+    }]);
   }
 
 }

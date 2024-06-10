@@ -1,0 +1,22 @@
+.row{
+    margin-top: 8%;
+}
+
+h5{
+    font-family: "Century Gothic";
+    font-weight: bolder;
+    font-size: 160%;
+    text-align: center;
+    color: rgb(153, 153, 153);
+}
+
+li{
+    font-family: "Century Gothic";
+    color: rgb(66, 89, 73);
+
+}
+
+
+#editar{
+    float: right;
+}

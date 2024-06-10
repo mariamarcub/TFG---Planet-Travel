@@ -17,7 +17,6 @@ export class OpenLayersMapComponent implements OnInit {
   map!: Map;
 
   ngOnInit(): void {
-    debugger;
     this.map = new Map({
       view: new View({
         center: fromLonLat([this.longitud, this.latitud]),

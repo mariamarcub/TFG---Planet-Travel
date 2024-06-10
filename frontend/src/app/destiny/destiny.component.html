@@ -1,0 +1,47 @@
+<div class="main-container">
+  <app-cabecera></app-cabecera>
+  <div class="principal">  
+    <div class="contenedor" *ngIf="voyages.length > 0"> <!--Si existe algún viaje-->
+      <h2 class="display-2">Viajes del Continente</h2>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Ciudad</th>
+              <th scope="col">Fecha Inicio</th>
+              <th scope="col">Fecha Fin</th>            
+              <th scope="col">Precio</th>
+              <th scope="col">Plazas ocupadas</th>
+              <th scope="col">Máximo de Viajeros</th>
+              <th scope="col">Grupo de edad</th>
+              <th scope="col"></th> <!-- Botón vacío para el botón de mostrar información del viaje -->
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let voyage of voyages">
+              <td class="pais">{{ voyage.city__name }}</td>
+              <td class="fecha">{{ voyage.date_start | date:'longDate' }}</td>
+              <td class="fecha">{{ voyage.date_end | date:'longDate' }}</td>
+              <td class="precio">{{ voyage.price | currency:'EUR' }}</td>
+              <td class="plazasOcupadasviajeros">{{ voyage.active_travelers }}</td>
+              <td class="maxviajeros">{{ voyage.maximum_travelers }}</td>
+              <td class="edadGrupo">{{ voyage.age_group }}</td>
+
+              <td><button (click)="viewVoyage(voyage.id)" class="btn btn-info">Ver viaje</button></td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div *ngIf="voyages.length === 0" class="no-voyages"> <!--Si no hay ningún viaje-->
+      <p>No hay viajes disponibles para {{ selectedContinentName }}</p>
+    </div>
+  </div>
+  <footer class="footer bg-success text-light">
+    <a class="contacto" href="#">Contacto</a><br>
+    <a class="preguntas" href="#">Preguntas frecuentes</a><br>
+    <a class="opiniones" href="#">Opiniones</a><br>
+  </footer>
+</div>

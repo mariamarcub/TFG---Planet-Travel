@@ -14,11 +14,13 @@ export class BookingComponent implements OnInit, OnDestroy {
   stripe: Stripe | null = null;
   card!: StripeCardElement;
   cardErrors?: string;
+  serverError?: string;
   bookingForm: FormGroup;
   voyageId?: number;
   numPersons?: number;
   voyagePrice?: number;
   isDataLoaded: boolean = false;
+  totalPrice?: number;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,6 +45,7 @@ export class BookingComponent implements OnInit, OnDestroy {
       this.voyageId = +params['voyage'];
       this.numPersons = +params['numPersons'];
       this.voyagePrice = +params['voyagePrice'];
+      this.totalPrice = this.numPersons * this.voyagePrice
       this.isDataLoaded = true;
     });
 
@@ -70,7 +73,8 @@ export class BookingComponent implements OnInit, OnDestroy {
     if (this.bookingForm.valid) {
       const formData = {
         ...this.bookingForm.value,
-        voyageId: this.voyageId
+        voyageId: this.voyageId,
+        num_persons: this.numPersons,
       };
 
       if (this.stripe) {
@@ -86,7 +90,7 @@ export class BookingComponent implements OnInit, OnDestroy {
               this.router.navigate(['/']);  // Redirigir a la ruta de cabecera después de una compra exitosa
             },
             error: error => {
-              console.error('Error al crear la compra', error);
+              this.serverError = error
             }
           });
         }

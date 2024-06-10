@@ -1,3 +1,3 @@
 <ng-container *ngFor="let continent of continents" class="continent-item"><!--Estoy iterando con ngFor para que cada continente sea un enlace-->
-        <a class="month-item" href="#">{{ continent.name }}</a><br>
+        <a class="continent-item" (click)="viewVoyagesContinent(continent.id)" >{{ continent.name }}</a>
 </ng-container>

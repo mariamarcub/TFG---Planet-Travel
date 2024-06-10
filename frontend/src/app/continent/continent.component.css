@@ -1,13 +1,35 @@
-a{
-    width: 100%;
-}
+.continent-item {
+    display: block; /* Convertir en bloque para ocupar toda la fila */
+    color: inherit; /* Color de texto por defecto */
+    text-decoration: none; /* Quitar subrayado */
+    transition: all 0.3s ease; /* Transición suave */
+    margin-bottom: 5px; /* Ajustar espacio vertical entre elementos */
+  }
+  
+  .continent-item:hover {
+    background-color: rgb(23, 169, 98); /* Color de fondo al pasar el ratón */
+    color: #fff; /* Color de texto al pasar el ratón */
+    border-radius: 0.25rem; /* Bordes redondeados */
+  }
+  
+  .continent-item:active {
+    color: rgb(38, 231, 138); /* Color de texto al hacer clic */
+    background-color: #b8daff; /* Color de fondo al hacer clic */
+  }
 
-a:hover{
-    font-size: 20px;
-    font-weight: bolder;
-    padding: 5px;
-    background: rgb(38, 231, 138);
-    color: blue;
-    width: 10%; 
-    text-align: center;  
-}
+
+
+  @media only screen and (max-width: 768px) {
+
+    .continent-item {
+      display: block; /* Convertir en bloque para ocupar toda la fila */
+      color: inherit; /* Color de texto por defecto */
+      text-decoration: none; /* Quitar subrayado */
+      transition: all 0.3s ease; /* Transición suave */
+      margin-bottom: 5px; /* Ajustar espacio vertical entre elementos */
+      font-size: 110%;
+    }
+  
+  
+  
+  }

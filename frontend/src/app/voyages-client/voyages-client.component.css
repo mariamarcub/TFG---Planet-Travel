@@ -1,0 +1,31 @@
+.voyage-container {
+    margin-bottom: 10px; /* Espacio entre elementos de viaje */
+  }
+  
+  .voyage-item {
+    display: block; /* Convertir en bloque para ocupar toda la fila */
+    color: inherit; /* Color de texto por defecto */
+    text-decoration: none; /* Quitar subrayado */
+    transition: all 0.3s ease; /* Transición suave */
+    padding: 10px; /* Añadir espaciado interno */
+    border-radius: 0.25rem; /* Bordes redondeados */
+  }
+  
+  .voyage-item:hover {
+    background-color: rgb(23, 169, 98); /* Color de fondo al pasar el ratón */
+    color: #fff; /* Color de texto al pasar el ratón */
+  }
+  
+  .voyage-item span {
+    display: inline-block; /* Asegurar que el span ocupe todo el ancho disponible */
+  }
+  
+  .voyage-item:active {
+    background-color: #b8daff; /* Color de fondo al hacer clic */
+  }
+
+
+
+span{
+    cursor: pointer;
+}

@@ -41,7 +41,6 @@ export class LoginService {
       tap(username => console.log('Persona logueada:', username))
     );
   }
-  
 
   salirSesion() {
     localStorage.removeItem('token');
@@ -53,6 +52,5 @@ export class LoginService {
     this.isAuthenticated.next(!!token);
     return this.isAuthenticated.asObservable();
   }
-  
   
 }

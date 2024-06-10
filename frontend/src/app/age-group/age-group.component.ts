@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AgeGroupService } from './age-group.service';
 import { AgeGroup } from './age-group.model';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-age-group',
@@ -11,16 +13,17 @@ import { AgeGroup } from './age-group.model';
 export class AgeGroupComponent implements OnInit {
   ageGroup: AgeGroup[] = [];
 
-  constructor(private MonthsService: AgeGroupService) {}
+  constructor(private AgeGroupService: AgeGroupService, private router: Router) {}
 
   ngOnInit() {
-    this.MonthsService.getAgeGroup().subscribe({
-      next: (data) => {
-        this.ageGroup = data;
-      },
-      error: (error) => {
-        console.error('There was an error!', error);
-      }
-    });
+    this.ageGroup = [
+      new AgeGroup(1, '18-30'),
+      new AgeGroup(2, '30-45'),
+      new AgeGroup(3, '45+')
+    ];
   }
+
+  viewVoyagesAge(ageGroup: string){
+    this.router.navigate(['/ageGroup', ageGroup]) /*Me dirige a la ruta deseada*/
+  }
 }

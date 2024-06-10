@@ -1,6 +1,6 @@
 export class Profile {
-    id: number = 0; // valor predeterminado
-    name: string = '';
-    
-  }
-  
+  username: string = '';
+  first_name: string = '';
+  last_name: string = '';
+  email: string = '';
+}

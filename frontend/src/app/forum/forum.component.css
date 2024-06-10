@@ -1,0 +1,18 @@
+h1{
+    color: blueviolet;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.listado{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+    color: rgb(0, 157, 255);
+    margin-bottom: 5%;
+}
+
+.cabecera{
+    font-size: 110%;
+    font-family: 'Comic Sans Ms';
+    color: grey;
+}
+

@@ -1,50 +1,62 @@
-<app-cabecera></app-cabecera>
+<div class="main-container">
+    <app-cabecera></app-cabecera>
+    <div class="principal">
+        <body>
+            <main>
+                <section class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <article class="registro" style="width: 500px;">
+                                <form (submit)="registroForm()" id="registroForm" method="post">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="username" name="username" [(ngModel)]="registrar.username" placeholder="Nombre" style="width:250px; margin-top: 10px; margin-bottom: 5px">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="registrar.email" placeholder="Email" style="width:250px; margin-bottom: 10px">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="registrar.password" placeholder="Contraseña" style="width:250px; margin-bottom: 5px">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="password2" name="password2" [(ngModel)]="registrar.password2" placeholder="Confirmar contraseña" style="width:250px; margin-bottom: 5px">
+                                    </div>                            
+                                    <button type="submit" class="btn btn-dark" style="width:150px; margin-top: 5px; margin-bottom: 10px">Registrarse</button>
+                                    <div *ngIf="registrationSuccess" class="alert alert-success">
+                                        Usuario registrado con éxito
+                                    </div>
 
-<body>
-    <main>
-        <section class="container">
-            <div class="row">
-                <div class="col-md-6" style="display: inline-flex;">
-                    <article class="registro" style="width: 500px;">
-                        <form (submit)="registroForm()" id="registroForm" method="post">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="username" name="username" [(ngModel)]="registrar.username" placeholder="Nombre" style="width:250px; margin-top: 10px; margin-bottom: 5px">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="first_name" name="first_name" [(ngModel)]="registrar.first_name" placeholder="Primer apellido" style="width:250px; margin-bottom: 5px">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="last_name" name="last_name" [(ngModel)]="registrar.last_name" placeholder="Segundo apellido" style="width:250px; margin-bottom: 5px">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="registrar.password" placeholder="Contraseña" style="width:250px; margin-bottom: 5px">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="password2" name="password2" [(ngModel)]="registrar.password2" placeholder="Confirmar contraseña" style="width:250px; margin-bottom: 5px">
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="registrar.email" placeholder="Email" style="width:250px; margin-bottom: 10px">
-                            </div>
-                            <button type="submit" class="btn btn-dark" style="width:150px; margin-bottom: 10px">Registrarse</button>
-                        </form>
-                    </article>
-                </div>
-                <div class="col-md-6">
-                    <article class="iniciar" style="width: 500px;">
-                        <form (submit)="iniciarSesionForm()">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="username" name="username" [(ngModel)]="iniciarSesion.username" placeholder="Usuario" style="width:250px; margin-top: 10px; margin-bottom: 5px">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="iniciarSesion.password" placeholder="Contraseña" style="width:250px; margin-bottom: 10px">
-                            </div>
-                            <button type="submit" class="btn btn-dark" style="width:150px; margin-bottom: 10px">Iniciar Sesión</button>
-                        </form>
-                    </article>
-                </div>
-            </div>
-        </section>
-    </main>
-</body>
+                                </form>
+                            </article>
+                            <br>
 
-<app-footer></app-footer>
+                        </div>
+
+                        <div class="col-md-6">
+                            <article class="iniciar" style="width: 500px;">
+                                <form (submit)="iniciarSesionForm()">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="username" name="username" [(ngModel)]="iniciarSesion.username" placeholder="Usuario" style="width:250px; margin-top: 10px; margin-bottom: 5px">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="iniciarSesion.password" placeholder="Contraseña" style="width:250px; margin-bottom: 10px">
+                                    </div>
+                                    <button type="submit" class="btn btn-dark" style="width:150px; margin-bottom: 10px">Iniciar Sesión</button>
+                                    <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+                                        {{ errorMessage }}
+                                    </div>
+                                </form>
+                            </article>
+                            <br>
+                            
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </body>
+    </div>
+    <footer class="footer bg-success text-light">
+        <a class="contacto" href="#">Contacto</a><br>
+        <a class="preguntas" href="#">Preguntas frecuentes</a><br>
+        <a class="opiniones" href="#">Opiniones</a><br>
+    </footer>
+</div>

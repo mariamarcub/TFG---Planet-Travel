@@ -8,4 +8,9 @@ h3{
     width: 600px; 
     height: 300px;
     margin-left: 10%;
+    padding: 5px;
+    border: 3px solid #93b493; /* Example border color */
+    border-radius: 10px; /* Example border radius */
+    box-shadow: 0 5px 10px rgb(171, 183, 173); /* Example shadow effect */
+
 }

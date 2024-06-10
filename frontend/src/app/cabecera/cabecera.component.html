@@ -1,12 +1,11 @@
 <header class="header">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <ul class="navbar" style="background-color:rgb(225, 254, 208);
-                                 width:100%; height: 130px; position: fixed; z-index: 2; padding-bottom: 10px;">
+        <ul class="navbar" id="navegable">
             <div class="derecha">
-                <li class="header__li" style="display: flex; align-items: flex-end; margin-top: 17%;">
+                <li class="header__li" id="titulo">
                     <a href="#" class="header__a" style="display: inline-block;">
                         PLANET TRAVEL
-                        <img src="./assets/logo.png" alt="" class="logo" style="width: 60px; vertical-align: bottom;">
+                        <img src="./assets/logo.png" alt="" class="logo">
                     </a>
                 </li>
             </div>
@@ -35,14 +34,26 @@
                         </div>
                     </li>
                     <li class="header__li">
-                        <a routerLink="/profile" class="header__a">PROFILE</a>
+                        <a href="#" class="header__a" id="forum">FORO</a>
+                        <div class="dropdown-content-ageGroup">
+                            <app-voyages-client></app-voyages-client>
+                        </div>
+                    </li>
+                    <li class="header__li">
+                        <p class="header__a" id="bienvenida">Bienvenid@ {{username}}</p>
                     </li>
                     <li class="header__li">
-                        <a (click)="logout()" class="header__a" id="logout">LOG OUT</a>
+                        <a routerLink="/profile" class="header__a" id="perfil">
+                            <img src="./assets/usuario.png" class="perfil" alt="Perfil"/>
+                        </a>
                     </li>
+                    
                     <li class="header__li">
-                        <p class="header__a">Bienvenid@ {{username}}</p>
-                    </li>
+                        <a (click)="logout()" class="header__a">
+                            <img src="./assets/cerrar-sesion.png" class ="cerrarSesion" alt="Delete Thread"/>
+                        </a>
+                    </li>                  
+                    
                 </div>
             </ng-container>
 
@@ -70,14 +81,17 @@
                             <app-age-group></app-age-group> 
                         </div>
                     </li>
+                    
                     <li class="header__li">
-                        <a routerLink="/login" class="header__a">LOGIN IN</a>
+                        <a routerLink="/login" class="header__a" id="login">
+                            <img src="./assets/iniciar-sesion.png" style="width: 40px;" alt="Perfil"/>
+                        </a>
                     </li>
+                    
                 </div>                 
                 
             </ng-container>                
         </ul>
     </nav>
-    <app-body *ngIf="mostrarBody"></app-body> <!--Solo debe aparecer la foto en el index-->   
+    <app-body *ngIf="mostrarBody" class="foto"></app-body> <!--Solo debe aparecer la foto en el index-->   
 </header>
-<app-footer></app-footer>

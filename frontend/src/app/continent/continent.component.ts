@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContinentService } from './continent.service';
 import { Continent } from './continent.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-continent',
@@ -10,7 +11,7 @@ import { Continent } from './continent.model';
 export class ContinentComponent implements OnInit {
   continents: Continent[] = [];
 
-  constructor(private continentService: ContinentService) {}
+  constructor(private continentService: ContinentService, private router: Router) {}
 
   ngOnInit() {
     this.continentService.getContinents().subscribe({
@@ -22,4 +23,8 @@ export class ContinentComponent implements OnInit {
       }
     });
   }
+
+  viewVoyagesContinent(continentId: number){
+    this.router.navigate(['/continentTrips', continentId]) /*Me dirige a la ruta deseada*/
+  }
 }

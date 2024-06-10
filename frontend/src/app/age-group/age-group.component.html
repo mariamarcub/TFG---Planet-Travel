@@ -1,3 +1,3 @@
 <ng-container *ngFor="let age_group of ageGroup">
-    <a class="age-item" href="#">{{ age_group.age }}</a><br>
+    <a class="age-item" (click)="viewVoyagesAge(age_group.age)">{{ age_group.age }}</a>
 </ng-container>

@@ -8,5 +8,7 @@ export class VoyageInfo {
     city_latitude: number = 0;
     city_longitude: number = 0;
     voyage_price: number = 0;
-    voyage_maximum_travelers: number = 0;
+    active_travelers: number = 0;    
+    voyage_maximum_travelers: number = 0;    
+    age_group: string = '';
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; // Importa ActivatedRoute
 import { LoginService } from '../login/login.service';
+import { Router } from '@angular/router'; // Importa Router
+
 
 @Component({
   selector: 'app-cabecera',
@@ -14,7 +16,9 @@ export class CabeceraComponent implements OnInit {
 
   constructor(
     private loginService: LoginService,
-    private route: ActivatedRoute // Inyecta ActivatedRoute
+    private route: ActivatedRoute, // Inyecta ActivatedRoute
+    private router: Router // Inyecta Router
+
   ) {}
 
   ngOnInit() {
@@ -44,6 +48,7 @@ export class CabeceraComponent implements OnInit {
 
   logout() {
     this.loginService.salirSesion();
+    this.router.navigate(['/']); // Redirigir a la página principal
   }
 }
 
