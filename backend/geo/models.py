@@ -44,6 +44,14 @@ class City(models.Model):
 
 #MODELO VIAJE
 class Voyage(models.Model):
+
+    # Definir las opciones para los grupos de edad
+    AGE_GROUP_CHOICES = [
+        ('18-30', '18-30'),
+        ('30-45', '30-45'),
+        ('45+', '45+'),
+    ]
+
     #user = models.ForeignKey(Client, on_delete=models.CASCADE)
     city = models.ForeignKey(City, on_delete=models.CASCADE, default=1)
     date_start = models.DateField()
@@ -52,6 +60,9 @@ class Voyage(models.Model):
     itinerary = models.TextField(default='Itinerario predeterminado.')
     price = models.DecimalField(max_digits=9, decimal_places=2)
     maximum_travelers = models.IntegerField()
+    active_travelers = models.IntegerField(null=True, default=0)
+    age_group = models.CharField(max_length=10, choices=AGE_GROUP_CHOICES, default='18-30')
+
 
     def __str__(self):
         return f"{self.city.name} - {self.date_start} - {self.date_end}"
@@ -80,11 +91,11 @@ class Purchase(models.Model):
 class Voyager(models.Model):
     name = models.CharField(max_length=32)
     last_name = models.CharField(max_length=32)
-    second_surname = models.CharField(max_length=32)
+    second_surname = models.CharField(max_length=32, null=True)
     email = models.CharField()
     birth_date = models.DateField()
     telephone = models.CharField(max_length=16)
-    dni = models.CharField(max_length=16, null=True)
-    passport = models.CharField(max_length=16, null=True)
+    dni = models.CharField(max_length=16, null=True, blank=True)
+    passport = models.CharField(max_length=16, null=True, blank=True)
     departure_city = models.ForeignKey(City, on_delete=models.CASCADE)
     purchase = models.ForeignKey(Purchase, on_delete=models.CASCADE)

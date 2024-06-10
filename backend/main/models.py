@@ -6,6 +6,7 @@ from django.conf import settings
 #MODELO CLIENTE
 class Client(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+   # photo = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
 
     def __str__(self):
         return f"{self.user.username}"

@@ -1,7 +1,7 @@
 # serializers.py
-
+from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Country, Continent, Voyage, Voyager
+from .models import Country, Continent, Voyage, Voyager, Client
 
 
 class MonthSerializer(serializers.Serializer): #Como no estamos usando un modelo, por eso usamos serializers.Serializer
@@ -26,6 +26,8 @@ class ContinentSerializer(serializers.ModelSerializer):
 
 class AgeGroupSerializer(serializers.Serializer):
     age = serializers.CharField()
+    id = serializers.IntegerField()
+
 
 
 class VoyagerSerializer(serializers.ModelSerializer):
@@ -34,15 +36,9 @@ class VoyagerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Voyager
         fields = [
-            'name', 'last_name', 'second_surname', 'email',
+            'name', 'last_name', 'email',
             'birth_date', 'telephone', 'dni', 'passport', 'departure_city'
         ]
-        extra_kwargs = {
-            'second_surname': {'required': False},
-            # Hacer que second_surname sea opcional
-            'dni': {'required': False, 'allow_null': True},
-            'passport': {'required': False, 'allow_null': True}
-        }
 
     def validate(self, data):
         dni = data.get('dni')
@@ -50,14 +46,6 @@ class VoyagerSerializer(serializers.ModelSerializer):
 
         if not dni and not passport:
             raise serializers.ValidationError(
-                "Debe proporcionar al menos un DNI o un pasaporte.")
-
-            # Validaciones adicionales para campos requeridos
-            required_fields = ['name', 'last_name', 'email', 'birth_date',
-                               'telephone', 'departure_city']
-            for field in required_fields:
-                if not data.get(field):
-                    raise serializers.ValidationError(
-                        {field: "Este campo es obligatorio."})
-
+                "Debe proporcionar al menos un DNI o un pasaporte."
+            )
         return data
