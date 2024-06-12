@@ -62,36 +62,14 @@ class LoginSerializer(serializers.Serializer):
         raise ValidationError("Credenciales incorrectas")
 
 
+
 class ProfileSerializer(serializers.ModelSerializer):
-    # Definimos campos adicionales que pertenecen al modelo User
     username = serializers.CharField(source='user.username')
     first_name = serializers.CharField(source='user.first_name')
     last_name = serializers.CharField(source='user.last_name')
     email = serializers.EmailField(source='user.email')
+    photo = serializers.ImageField()  # Añadir este campo
 
     class Meta:
         model = Client
-        fields = ['username', 'first_name', 'last_name', 'email']
-
-
-    # Método para actualizar tanto el modelo Client como el modelo User
-    def update(self, instance, validated_data):
-        # Extraemos los datos del usuario del diccionario de datos validados
-        user_data = validated_data.pop('user', {})
-        # Obtenemos el usuario asociado al cliente
-        user = instance.user
-
-        # Actualizamos el cliente usando el método update de la superclase
-        instance = super().update(instance, validated_data)
-
-        # Actualizamos los campos del usuario si están presentes en los datos validados
-        if user_data:
-            user.username = user_data.get('username', user.username)
-            user.first_name = user_data.get('first_name', user.first_name)
-            user.last_name = user_data.get('last_name', user.last_name)
-            user.email = user_data.get('email', user.email)
-
-            # Guardamos los cambios en el modelo User
-            user.save()
-
-        return instance
+        fields = ['username', 'first_name', 'last_name', 'email', 'photo']

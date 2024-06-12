@@ -13,3 +13,7 @@ DATABASES = {
         'PORT': env('POSTGRES_PORT'),
     }
 }
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(PROJECT_ROOT_DIR, 'media')

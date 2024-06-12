@@ -1,4 +1,7 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from rest_framework.exceptions import ValidationError
+
 from main.models import Client, Card
 
 # MODELO CONTINENTE
@@ -99,3 +102,16 @@ class Voyager(models.Model):
     passport = models.CharField(max_length=16, null=True, blank=True)
     departure_city = models.ForeignKey(City, on_delete=models.CASCADE)
     purchase = models.ForeignKey(Purchase, on_delete=models.CASCADE)
+
+
+class Opinion(models.Model):
+    purchase = models.ForeignKey(Purchase, on_delete=models.CASCADE)
+    rating = models.IntegerField(
+        default=1,
+        validators=[
+            MaxValueValidator(5),
+            MinValueValidator(1)
+        ]
+    )
+    comment = models.CharField(max_length=1024)
+    report_date = models.DateTimeField(auto_now_add=True)

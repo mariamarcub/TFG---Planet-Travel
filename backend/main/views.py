@@ -1,6 +1,8 @@
 from django.contrib.auth import login
 from rest_framework import status
 from rest_framework.authtoken.models import Token
+from rest_framework.generics import get_object_or_404
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from main.models import Client
@@ -46,34 +48,34 @@ class LoginAPIView(APIView):
 
 
 class ProfileAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get(self, request):
-        try:
-            client = Client.objects.get(user=request.user)
-            serializer = ProfileSerializer(client) # toma el objeto Client y lo transforma en una representación serializada de los datos
+        client = get_object_or_404(Client, user=request.user)
+        serializer = ProfileSerializer(client) # toma el objeto Client y lo transforma en una representación serializada de los datos
+        return Response(serializer.data)
+
+    #Actualizar la información del perfil del usuario registrado
+    def put(self, request, *args, **kwargs):
+        serializer = ProfileSerializer(data=request.data, partial=True)
+        if serializer.is_valid():
+            user = request.user
+            user_data = serializer.validated_data['user']
+            user.username = user_data.get('username', user.username)
+            user.first_name = user_data.get('first_name', user.first_name)
+            user.last_name = user_data.get('last_name', user.last_name)
+            user.email = user_data.get('email', user.email)
+            user.save()
             return Response(serializer.data)
-        except Client.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    # Actualizar la información del perfil del usuario registrado
-    def put(self, request):
-        try:
-            client = Client.objects.get(user=request.user)
-            serializer = ProfileSerializer(client, data=request.data, partial=True)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        except Client.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-
-    # Para poder subir la imagen
+        # Para poder subir la imagen
     def post(self, request):
-        try:
-            client = Client.objects.get(user=request.user)
-            if 'photo' in request.FILES:
-                client.photo = request.FILES['photo']
-                client.save()
-                return Response({'filePath': client.photo.url}, status=status.HTTP_200_OK)
-            return Response({'error': 'No file provided'}, status=status.HTTP_400_BAD_REQUEST)
-        except Client.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+        client = get_object_or_404(Client, user=request.user)
+        if 'photo' in request.FILES:
+            client.photo = request.FILES['photo']
+            client.save()
+            return Response({'filePath': client.photo.url}, status=status.HTTP_200_OK)
+        return Response({'error': 'No file provided'}, status=status.HTTP_400_BAD_REQUEST)
+
+

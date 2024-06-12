@@ -1,6 +1,7 @@
 from django.db import transaction
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
+from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -8,7 +9,7 @@ from rest_framework import status
 import stripe
 
 from main.models import Card, Client
-from .models import Country, Continent, Voyage, Purchase, City
+from .models import Country, Continent, Voyage, Purchase, City, Opinion
 from .serializers import CountrySerializer, ContinentSerializer, \
     MonthSerializer, AgeGroupSerializer, VoyageSerializer, \
     VoyagerSerializer
@@ -117,6 +118,10 @@ class AgeGroupVoyagesAPIView(APIView):
 class ShowVoyageInfoAPIView(APIView):
     def get(self, request, voyage_id):
         voyage = get_object_or_404(Voyage, pk=voyage_id)
+        client = get_object_or_404(Client, user=request.user)
+        purchase = Purchase.objects.filter(
+            client=client, voyage=voyage
+        ).first()
         if voyage:
             data = {
                 'voyage_id': voyage.id,
@@ -130,10 +135,12 @@ class ShowVoyageInfoAPIView(APIView):
                 'voyage_price': voyage.price,
                 'voyage_maximum_travelers': voyage.maximum_travelers,
                 'active_travelers': voyage.active_travelers,
-                'age_group': voyage.age_group
+                'age_group': voyage.age_group,
+                'is_purchased': purchase is not None
             }
             return Response(data, status=status.HTTP_200_OK)
         return Response({'Error': 'Voyage not found'}, status=status.HTTP_404_NOT_FOUND)
+
 
 
 
@@ -197,7 +204,7 @@ class PurchaseAPIView(APIView):
 class ConfirmPurchaseAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
-    def get(self, request, voyage_id):
+    def get(self, request, voyage_id): #voyage_id se obtiene desde la URL
         client = Client.objects.filter(user=request.user).first()
         voyage = get_object_or_404(Voyage, pk=voyage_id)
         cards = Card.objects.filter(client=client).values(
@@ -225,6 +232,38 @@ class VoyagesByClientAPIView(APIView):
             'voyage__id', 'voyage__city__name', 'voyage__date_start'
         ).distinct()
         return Response(voyages)
+
+
+
+
+#OPINIONES DE LOS CLIENTES QUE HAN REALIZADO UN VIAJE
+class OpinionsAPIView(APIView):
+    def get(self, request):
+        opinions = Opinion.objects.all().order_by(
+            '-report_date')[:5]
+        opinions_data = [{"rating": opinion.rating, "comment": opinion.comment,
+                          "report_date": opinion.report_date} for opinion in
+                         opinions]
+        return Response(opinions_data)
+
+    @permission_classes([IsAuthenticated])
+    def post(self, request):
+        client = get_object_or_404(Client, user=request.user)
+        voyage = get_object_or_404(Voyage, pk=request.data['voyage_id']) #Para coger la ID desde el navegador
+        today = timezone.now().date()
+        purchase = Purchase.objects.filter(
+            client=client, voyage=voyage
+        ).first()
+
+        if purchase and today >= voyage.date_end:
+            Opinion.objects.create(
+                purchase=purchase,
+                rating=int(request.data['opinion']['rating']),
+                comment=request.data['opinion']['comment']
+            )
+            return Response({'message': 'Opinion created.'}, status=status.HTTP_200_OK)
+        return Response({'message': 'Error bad request.'}, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 

@@ -26,3 +26,8 @@ RUN pip install -r requirements.txt
 # Después de instalar las dependencias, copia el resto de tu aplicación
 COPY . /app/
 
+# Añade permisos para el directorio de medios
+RUN mkdir -p /app/media/profile_pics && \
+    chmod -R 755 /app/media/profile_pics && \
+    chown -R www-data:www-data /app/media/profile_pics\
+

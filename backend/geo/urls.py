@@ -28,4 +28,7 @@ urlpatterns = [
     #Viajes comprados por el cliente
     path('voyagesByClient/', VoyagesByClientAPIView.as_view(), name='voyagesByClient'),
 
+    #Opiniones de los clientes
+    path('opinions/', OpinionsAPIView.as_view(), name='profile'),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

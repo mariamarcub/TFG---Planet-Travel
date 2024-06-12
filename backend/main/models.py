@@ -3,10 +3,11 @@ from django.db import models
 from django.conf import settings
 
 
+
 #MODELO CLIENTE
 class Client(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-   # photo = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
+    photo = models.ImageField(upload_to='media/profile_pics/', null=True, blank=True)
 
     def __str__(self):
         return f"{self.user.username}"
@@ -35,5 +36,6 @@ class Card(models.Model):
     class Meta:
         unique_together = ['type', 'owner']
         verbose_name_plural = "Cards"  # Para que reconozca la clase en plural también
+
 
 

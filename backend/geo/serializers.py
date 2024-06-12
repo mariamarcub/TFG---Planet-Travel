@@ -1,7 +1,9 @@
 # serializers.py
+from datetime import timezone
+
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Country, Continent, Voyage, Voyager, Client
+from .models import Country, Continent, Voyage, Voyager, Client, Opinion, Purchase
 
 
 class MonthSerializer(serializers.Serializer): #Como no estamos usando un modelo, por eso usamos serializers.Serializer
@@ -49,3 +51,10 @@ class VoyagerSerializer(serializers.ModelSerializer):
                 "Debe proporcionar al menos un DNI o un pasaporte."
             )
         return data
+
+
+class OpinionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Opinion
+        fields = ['id', 'purchase', 'rating', 'comment', 'report_date']
+

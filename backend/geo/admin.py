@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import City, Voyager
+from .models import City, Voyager, Opinion
 from .models import Country
 from .models import Continent
 from .models import Purchase
@@ -44,3 +44,11 @@ class VoyageAdmin(admin.ModelAdmin):
 @admin.register(Voyager)
 class VoyagerAdmin(admin.ModelAdmin):
     search_fields = ['name', 'last_name', 'first_name']
+
+
+@admin.register(Opinion)
+class OpinionAdmin(admin.ModelAdmin):
+    list_display = ('purchase', 'rating', 'comment', 'report_date')
+    search_fields = ('comment', 'purchase__id')
+    list_filter = ('rating', 'report_date')
+    ordering = ('-report_date',)

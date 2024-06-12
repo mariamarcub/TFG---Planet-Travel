@@ -2,23 +2,20 @@
 version: '3.1'
 
 services:
-# https://hub.docker.com/_/postgres
-# https://github.com/cookiecutter/cookiecutter-django
-# https://cookiecutter-django.readthedocs.io/en/latest/developing-locally-docker.html
-
   backend:
-    #    tty: true
     command: python manage.py runserver 0.0.0.0:8000
     build: .
     volumes:
       - .:/app
+      - profile_pics:/app/media/profile_pics  # Añadir esta línea
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings.production
     ports:
       - "8000:8000"
     depends_on:
       - postgres
 
   postgres:
-
     image: postgres:15
     container_name: django-tfg-DB
     env_file:
@@ -32,4 +29,4 @@ services:
 volumes:
   djangotfg_postgres_data:
   djangotfg_data_backups:
-
+  profile_pics:
