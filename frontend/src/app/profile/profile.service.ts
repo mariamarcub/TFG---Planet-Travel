@@ -22,7 +22,7 @@ export class ProfileService {
   uploadPhoto(file: File): Observable<any> {
     const formData = new FormData();
     formData.append('photo', file);
-    return this.http.post(`${this.apiUrl}upload/`, formData);
-  }
+    return this.http.post(this.apiUrl, formData);
+  }
 }
 

@@ -47,6 +47,7 @@ export class LoginService {
     this.isAuthenticated.next(false);
   }
 
+  //Comprobar si está o no autenticado
   estaAutenticado(): Observable<boolean> {
     const token = localStorage.getItem('token');
     this.isAuthenticated.next(!!token);

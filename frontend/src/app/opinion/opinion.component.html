@@ -1,0 +1,13 @@
+<div class="opinions-container">
+  <h2>¡Opiniones de nuestros intrépidos viajeros!</h2>
+  <div *ngIf="currentOpinions.length === 0">
+    No hay opiniones disponibles.
+  </div>
+  <div class="opinion-row">
+    <div *ngFor="let opinion of currentOpinions" class="opinion-card">
+      <p class="estrellas">{{ convertToStars(opinion.rating) }}</p>
+      <p>{{ opinion.comment }}</p>
+      <p class="fecha"><strong>Publicada:</strong> {{ opinion.report_date | date:'shortDate' }}</p>
+    </div>
+  </div>
+</div>

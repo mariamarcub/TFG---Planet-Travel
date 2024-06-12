@@ -41,6 +41,7 @@ export class ThreadForumComponent {
         .subscribe((response) => {
           this.comments.push(response);
           this.newComment = { content: '' };
+          this.loadData(); //Permite recargar la página de forma automática
         });
     }
   }

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { VoyageService } from './voyage.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { VoyageInfo } from './voyage.model';
+import { VoyageInfo} from './voyage.model';
+import { Opinion } from '../opinion/opinion.model';
+import { LoginService } from '../login/login.service';
 
 @Component({
   selector: 'app-voyage',
@@ -12,13 +14,21 @@ export class VoyageComponent implements OnInit {
   voyage: VoyageInfo = new VoyageInfo();
   totalDays: number = 0;
   numPersons: number = 0;
+  opinion: Opinion = { id: 0, rating: 0, comment: '', voyage_id: 0, report_date: ''};
+  isAuthenticated: boolean = false;
 
-  constructor(public service: VoyageService, public navRoute: Router, public route: ActivatedRoute) {}
+
+  constructor(public service: VoyageService, public navRoute: Router, public route: ActivatedRoute, private loginService: LoginService) {}
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       var voyageId = +params['voyage'];
       this.loadVoyageInfo(voyageId);
+    });
+
+    //Ver si el usuario estar autenticado
+    this.loginService.estaAutenticado().subscribe(authenticated => {
+      this.isAuthenticated = authenticated;
     });
   }
 
@@ -41,6 +51,18 @@ export class VoyageComponent implements OnInit {
       numPersons: numPersons, 
       voyagePrice: voyagePrice, 
     }]);
-  }
+  }
 
+  submitOpinion() {
+    this.service.createOpinion(this.opinion, this.voyage.voyage_id).subscribe(response => {
+      console.log('Opinión creada con éxito', response);
+      // Aquí puedes agregar lógica adicional, como mostrar un mensaje de éxito al usuario
+    });
+  }
+
+  showOpinionForm(): boolean {
+    const today = new Date();
+    const endDate = new Date(this.voyage.voyage_date_end);
+    return this.voyage.is_purchased && this.isAuthenticated && today > endDate;
+  }
 }

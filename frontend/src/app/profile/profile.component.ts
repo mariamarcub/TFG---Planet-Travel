@@ -11,7 +11,10 @@ import { Profile } from './profile.model';
 export class ProfileComponent implements OnInit {
   profileForm!: FormGroup; 
   editing = false;
-  selectedFile: File | null = null; //variable para la foto a
+  selectedFile: File | null = null; // variable para la foto
+  profilePhotoUrl: string | null = null; // URL de la foto de perfil
+  savedSuccessfully: boolean = false; //Mensaje creado con exito
+
 
   constructor(private fb: FormBuilder, private profileService: ProfileService) { }
 
@@ -26,10 +29,12 @@ export class ProfileComponent implements OnInit {
     this.loadUserProfile();
   }
 
+  //Cargar la url de la foto y los datos del cliente
   loadUserProfile(): void {
     this.profileService.getProfile().subscribe(
       (profile: Profile) => {
         this.profileForm.patchValue(profile);
+        this.profilePhotoUrl = `http://localhost:8000${profile.photo}`;
       },
       error => {
         console.error('Error al cargar el perfil', error);
@@ -37,6 +42,7 @@ export class ProfileComponent implements OnInit {
     );
   }
 
+  //Permitir editar perfil de usuario o no
   toggleEditing() {
     this.editing = !this.editing;
     if (this.editing) {
@@ -44,6 +50,11 @@ export class ProfileComponent implements OnInit {
     } else {
       this.profileForm.disable();
     }
+  }
+
+  //Me permite buscar una imagen en mi pc
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0] as File;
   }
 
   saveProfile() {
@@ -54,6 +65,8 @@ export class ProfileComponent implements OnInit {
           console.log('Perfil actualizado', response);
           this.editing = false;
           this.profileForm.disable();
+          
+          
         },
         error => {
           console.error('Error al actualizar el perfil', error);
@@ -61,4 +74,17 @@ export class ProfileComponent implements OnInit {
       );
     }
   }
+
+  uploadPhoto() {
+    if (this.selectedFile) {
+      this.profileService.uploadPhoto(this.selectedFile).subscribe(
+        response => {
+          this.loadUserProfile();
+        },
+        error => {
+          console.error('Error al subir la foto', error);
+        }
+      );
+    }
+  }
 }

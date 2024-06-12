@@ -26,6 +26,7 @@ import { IndexComponent } from './index/index.component';
 import { VoyagesClientComponent } from './voyages-client/voyages-client.component';
 import { AgeGroupTripsComponent } from './age-group-trips/age-group-trips.component';
 import { ThreadForumComponent } from './thread-forum/thread-forum.component';
+import { OpinionComponent } from './opinion/opinion.component';
 
 // Registra el idioma español
 registerLocaleData(localeEs);
@@ -56,7 +57,8 @@ const routes: Routes = [
     VoyagesClientComponent,
     IndexComponent,
     AgeGroupTripsComponent,
-    ThreadForumComponent
+    ThreadForumComponent,
+    OpinionComponent
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,8 @@ export class CabeceraComponent implements OnInit {
   isAuthenticated: boolean = false;
   mostrarBody: boolean = true; // Por defecto, no mostrar la foto en la cabecera
   username: string = '';
+  mostrarOpinion: boolean = false;
+
 
   constructor(
     private loginService: LoginService,
@@ -25,7 +27,7 @@ export class CabeceraComponent implements OnInit {
     this.loginService.estaAutenticado().subscribe(
       (isAuthenticated: boolean) => {
         this.isAuthenticated = isAuthenticated;
-  
+
         // Verificar si la ruta actual está definida y tiene al menos un segmento de URL
         if (this.route.snapshot.url && this.route.snapshot.url.length > 0) {
           const currentRoute = this.route.snapshot.url[0].path; // Obtener el primer segmento de la ruta
@@ -33,9 +35,12 @@ export class CabeceraComponent implements OnInit {
           if (currentRoute === 'perfil') {
             this.mostrarBody = true; // En la página de perfil, no mostrar la foto en la cabecera
           } else {
-            this.mostrarBody = false; // En la página principal, mostrar la foto en la cabecera
+            this.mostrarBody = false; // En otras páginas, no mostrar la foto en la cabecera
           }
         }
+
+        // Chequea si la ruta actual es la principal. Si no es la principal, no mostrará las opiniones
+        this.mostrarOpinion = this.router.url === '/';
       }
     );
 
@@ -44,7 +49,13 @@ export class CabeceraComponent implements OnInit {
         this.username = username;
       }
     );
+
+    this.router.events.subscribe(() => {
+      // Actualizar mostrarOpinion cuando la ruta cambie
+      this.mostrarOpinion = this.router.url === '/';
+    });
   }
+
 
   logout() {
     this.loginService.salirSesion();

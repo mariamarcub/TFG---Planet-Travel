@@ -11,4 +11,7 @@ export class VoyageInfo {
     active_travelers: number = 0;    
     voyage_maximum_travelers: number = 0;    
     age_group: string = '';
+    is_purchased: boolean = false;
+
 }
+

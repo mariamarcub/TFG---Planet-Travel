@@ -89,17 +89,20 @@ button{
 
 
 footer {
-    margin-top: 10%;
     width: 100%;
-    height: 110px;
+    height: auto 0;
     background-color: #28a745; /* Cambia el color de fondo según tus preferencias */
     color: #fff; /* Cambia el color del texto según tus preferencias */
-    padding: 10px 0;}
+    padding: 10px; /* Ajusta el relleno según tus preferencias */
+    margin-top: 10%;
+    position: relative; /* Asegura que el footer sea parte del flujo del documento */
 
-footer a:link,
-a:visited {
-  color: white; /* Define el color de los enlaces sin visitar y visitados */
-  text-decoration: none; /* Quita la subrayado de los enlaces */
+}
+
+.contacto{
+  text-decoration: underline;
+  text-decoration-thickness: 2px; /* Grosor de la línea */
+  text-underline-offset: 4px; /* Distancia entre la línea y la palabra */
 }
 
 
