@@ -1,33 +1,81 @@
-#principal{
-    margin-bottom: 20%;
-}
-
-#mapa{
+/* Contenedor principal que envuelve todo el contenido */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Contenedor del contenido principal */
+  .content-container {
+    flex: 1;
+    overflow: auto; /* Permitir el scroll si el contenido es largo */
+    padding-bottom: 250px; /* Espacio para el footer */
+  }
+  
+  /* Contenido principal */
+  .principal {
+    padding: 20px;
+  }
+  
+  /* Footer */
+  .footer {
+    width: 100%;
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+  }
+  
+  #mapa {
     width: 50px;
     margin-bottom: 5%;
-}
 
-h3{
+  }
+  
+  h3 {
     margin-left: 5%;
     color: rgb(253, 85, 152);
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-button{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  
+  button {
     font-size: 130%;
     width: 40%;
-}
+  }
+  
+  .contacto {
+    text-decoration: underline;
+    text-decoration-thickness: 2px; /* Grosor de la línea */
+    text-underline-offset: 4px; /* Distancia entre la línea y la palabra */
+  }
+  
+  #cajaPrecio {
+    width: 30%; 
+    margin: 0 auto;
+  }
+  
+  #botonOpinion {
+    margin-top: 10px;
+    width: 40%;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    #cajaPrecio {
+      border: 2px black solid;
+      width: 60%;
+      margin: 0 auto;
+    }
+  
+    #reservar {
+      width: 40%;
+      font-size: 100%;
+    }
+  
+    #botonOpinion {
+      width: 40%;
+      font-size: 100%;
+    }
 
-footer {
-    width: 100%;
-    height: auto 0;
-    background-color: #28a745; /* Cambia el color de fondo según tus preferencias */
-    color: #fff; /* Cambia el color del texto según tus preferencias */
-    padding: 10px; /* Ajusta el relleno según tus preferencias */
-}
-
-.contacto{
-  text-decoration: underline;
-  text-decoration-thickness: 2px; /* Grosor de la línea */
-  text-underline-offset: 4px; /* Distancia entre la línea y la palabra */
-}
+    
+  }

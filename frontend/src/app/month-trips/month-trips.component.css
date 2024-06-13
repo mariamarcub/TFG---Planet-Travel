@@ -1,6 +1,6 @@
 
 h2{ 
-    margin-top:2.5em;
+    margin-top:1.5em;
     font-size: 300%;
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -77,34 +77,35 @@ button{
 .main-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Asegúrate de que ocupe al menos toda la altura de la ventana */
+    min-height: 100%;
+    position: relative;
   }
   
-
-/* La parte principal del contenido debe expandirse para llenar el espacio disponible */
-.principal {
+  .content-container {
     flex: 1;
   }
   
+  .principal {
+    padding: 20px;
+    margin-bottom: 200px; /* Ajusta el margen inferior para dejar espacio al footer */
+  }  
 
 
-footer {
+  .footer {
     width: 100%;
-    height: auto 0;
-    background-color: #28a745; /* Cambia el color de fondo según tus preferencias */
-    color: #fff; /* Cambia el color del texto según tus preferencias */
-    padding: 10px; /* Ajusta el relleno según tus preferencias */
-    margin-top: 10%;
-    position: relative; /* Asegura que el footer sea parte del flujo del documento */
-
-}
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+  }
+  
 
 .contacto{
   text-decoration: underline;
   text-decoration-thickness: 2px; /* Grosor de la línea */
   text-underline-offset: 4px; /* Distancia entre la línea y la palabra */
 }
-
 
 
 
@@ -120,8 +121,8 @@ footer {
 
 
     h2{ 
-    margin-top:10%;
-    font-size: 100%;
+    margin-top:10rem;
+    font-size: 200%;
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-decoration: underline;
@@ -133,7 +134,7 @@ footer {
 
 .contenedor table {
         width: 100%; /* Cambia el ancho de la tabla al 100% del ancho del contenedor en dispositivos móviles */
-        margin-top: 20%;
+        margin-top: 5%;
         overflow-y: auto; /* Agrega una barra de desplazamiento vertical si el contenido desborda el contenedor */
 
     }

@@ -1,93 +1,103 @@
-<app-cabecera></app-cabecera>
-<div class="container my-4" id="principal">
-  <h2 class="text-center mb-4">Viaje por {{ voyage.city_name }}</h2>
+<div class="main-container">
+  <app-cabecera></app-cabecera>
+  <div class="content-container">
 
-  <div class="row">
-    <div class="col-md-6">
-      <h3>Sumérgete en la aventura</h3>
-      <p class="resumen">{{ voyage.description }}</p>    
-      <h3>Fecha del viaje</h3>
-      <div class="d-flex align-items-center mb-2">
-        <img src="./assets/despegue.png" alt="" class="mr-2" style="width: 24px;">
-        <p class="fechaInicio mb-0">Desde el {{ voyage.voyage_date_start | date:'d'}} de {{ voyage.voyage_date_start | date:'MMMM'}}</p>
-      </div>
-      <div class="d-flex align-items-center mb-2">
-        <img src="./assets/aterrizaje.png" alt="" class="mr-2" style="width: 24px;">
-        <p class="fechaFin mb-0">Hasta el {{ voyage.voyage_date_end | date:'d'}} de {{ voyage.voyage_date_end | date:'MMMM'}}</p>
-      </div>
-    </div>
-    
-    <div class="form-group border rounded p-3 shadow" style="width: 30%; margin: 0 auto;" >
-      <form>
-        <div class="form-group">
-          <div class="dias" style="text-align: center; font-size: 150%; color:rgb(166, 92, 251); ">
-            <strong>{{ voyage.city_name }} {{ totalDays }} días</strong>
+    <div class="container my-4" id="principal">
+      <h2 class="text-center mb-4">Viaje por {{ voyage.city_name }}</h2>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Sumérgete en la aventura</h3>
+          <p class="resumen">{{ voyage.description }}</p>    
+          <h3>Fecha del viaje</h3>
+          <div class="d-flex align-items-center mb-2">
+            <img src="./assets/despegue.png" alt="" class="mr-2" style="width: 24px;">
+            <p class="fechaInicio mb-0">Desde el {{ voyage.voyage_date_start | date:'d'}} de {{ voyage.voyage_date_start | date:'MMMM'}}</p>
+          </div>
+          <div class="d-flex align-items-center mb-2">
+            <img src="./assets/aterrizaje.png" alt="" class="mr-2" style="width: 24px;">
+            <p class="fechaFin mb-0">Hasta el {{ voyage.voyage_date_end | date:'d'}} de {{ voyage.voyage_date_end | date:'MMMM'}}</p>
           </div>
         </div>
-        <div class="form-group">
-          <p style="font-weight: bolder; text-align: center; font-size: 130%; color:rgb(96, 171, 251); margin-top: 10px;">Grupo de edad: {{voyage.age_group}}</p>
+        
+        <div class="form-group border rounded p-3 shadow" id="cajaPrecio">
+          <form>
+            <div class="form-group">
+              <div class="dias" style="text-align: center; font-size: 150%; color:rgb(166, 92, 251); ">
+                <strong>{{ voyage.city_name }} {{ totalDays }} días</strong>
+              </div>
+            </div>
+            <div class="form-group">
+              <p style="font-weight: bolder; text-align: center; font-size: 130%; color:rgb(96, 171, 251); margin-top: 10px;">Grupo de edad: {{voyage.age_group}}</p>
+            </div>
+            <div class="form-group d-flex justify-content-center">      
+              <div class="d-flex align-items-center">
+                <p class="total mb-0" style="font-weight: bolder;">Total</p>
+                <strong style="font-size: 150%; color:rgb(184, 2, 2); margin-left: 5px;">{{ voyage.voyage_price }}€</strong>
+              </div>      
+            </div>  
+            <div class="form-group">
+              <select class="form-control" id="numPersons" name="numPersons" [(ngModel)]="numPersons" #numPersonsCtrl="ngModel" style="width: 60%; margin: 0 auto;">
+                <option value="" disabled selected>Número de personas</option>
+                <option *ngFor="let i of [1,2,3,4,5]" [value]="i">{{ i }}</option>
+              </select> 
+            </div>  
+            <div class="text-center mt-5"> 
+              <button type="submit" class="btn btn-primary mt-3" id="reservar" (click)="goToBooking(voyage.voyage_id, voyage.voyage_price, numPersons)">Reservar</button>
+            </div>          
+          </form>
         </div>
-        <div class="form-group d-flex justify-content-center">      
-          <div class="d-flex align-items-center">
-            <p class="total mb-0" style="font-weight: bolder;">Total</p>
-            <strong style="font-size: 150%; color:rgb(184, 2, 2); margin-left: 5px;">{{ voyage.voyage_price }}€</strong>
-          </div>      
-        </div>  
-        <div class="form-group">
-          <select class="form-control" id="numPersons" name="numPersons" [(ngModel)]="numPersons" #numPersonsCtrl="ngModel" style="width: 60%; margin: 0 auto;">
-            <option value="" disabled selected>Número de personas</option>
-            <option *ngFor="let i of [1,2,3,4,5]" [value]="i">{{ i }}</option>
-          </select> 
-        </div>  
-        <div class="text-center mt-5"> 
-          <button type="submit" class="btn btn-primary mt-3" id="reservar" (click)="goToBooking(voyage.voyage_id, voyage.voyage_price, numPersons)">Reservar</button>
-        </div>          
-      </form>
-    </div>
-  </div>
-  
-  <div class="row mt-4">
-    <div class="col-md-6">
-      <p class="itinerario">{{ voyage.voyage_info }}</p>
-    </div>
-    <div class="col-md-6" id="mapa">
-      <ng-container *ngIf="voyage.city_latitude && voyage.city_longitude">
-        <open-layers-map [latitud]="voyage.city_latitude" [longitud]="voyage.city_longitude"></open-layers-map>
-      </ng-container>
-    </div>
-  </div>
-  <!-- Mostrar formulario de comentario solo si el usuario ha comprado el viaje y la fecha de hoy es posterior a la fecha de finalización del viaje -->
-  <div *ngIf="showOpinionForm()">
-    <div class="row">
-      <div class="col-md-6">
-        <h3>Deja tu comentario</h3>
-        <form (submit)="submitOpinion()">
-          <div class="form-group">
-            <label for="rating">Valoración:</label>
-            <select class="form-control" id="rating" name="rating" [(ngModel)]="opinion.rating">
-              <option value="1">1 estrella</option>
-              <option value="2">2 estrellas</option>
-              <option value="3">3 estrellas</option>
-              <option value="4">4 estrellas</option>
-              <option value="5">5 estrellas</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="comment">Comentario:</label>
-            <textarea class="form-control" id="comment" name="comment" [(ngModel)]="opinion.comment" rows="4"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Enviar comentario</button>
-        </form>
       </div>
-    </div>
-  </div>  
-</div> <!--Termina el Div PRINCIPAL-->
-<footer class="footer bg-success text-light">
-  <p class="contacto">Contacto</p>
-  <p class="preguntas">Teléfono: +34 647205412</p>
-  <p class="opiniones">Email: planettravel@gmail.com</p>
-</footer>
-
+      
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <h3>Itinerario</h3>
+          <p class="itinerario">{{ voyage.voyage_info }}</p>
+        </div>
+        <div class="col-md-6" id="mapa">
+          <ng-container *ngIf="voyage.city_latitude && voyage.city_longitude">
+            <open-layers-map [latitud]="voyage.city_latitude" [longitud]="voyage.city_longitude"></open-layers-map>
+          </ng-container>
+        </div>
+      </div>
+      <!-- Mostrar formulario de comentario solo si el usuario ha comprado el viaje y la fecha de hoy es posterior a la fecha de finalización del viaje -->
+      <div *ngIf="showOpinionForm()">
+        <div class="row">
+          <div class="col-md-6">
+            <h3>Deja tu comentario</h3>
+            <form (submit)="submitOpinion()">
+              <div class="form-group">
+                <label for="rating">Valoración:</label>
+                <select class="form-control" id="rating" name="rating" [(ngModel)]="opinion.rating">
+                  <option value="1">1 estrella</option>
+                  <option value="2">2 estrellas</option>
+                  <option value="3">3 estrellas</option>
+                  <option value="4">4 estrellas</option>
+                  <option value="5">5 estrellas</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="comment">Comentario:</label>
+                <textarea class="form-control" id="comment" name="comment" [(ngModel)]="opinion.comment" rows="4"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" id="botonOpinion">Enviar comentario</button>
+            </form>
+          </div>
+        </div>
+      </div>  
+        <!-- Mostrar mensaje de éxito -->
+        <div *ngIf="comentarioCreado" class="alert alert-success alert-dismissible fade show mt-3" role="alert" style="width: 30%; text-align: center;">
+          Se ha creado con éxito el comentario      
+        </div>
+      
+    </div> <!--Termina el Div PRINCIPAL-->
+  </div>
+  <footer class="footer bg-success text-light">
+    <p class="contacto">Contacto</p>
+    <p class="preguntas">Teléfono: +34 647205412</p>
+    <p class="opiniones">Email: planettravel@gmail.com</p>
+  </footer>
+</div>
 
 
 

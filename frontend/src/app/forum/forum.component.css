@@ -18,14 +18,7 @@ h1{
     color: grey;
 }
 
-footer {
-    width: 100%;
-    height: auto 0;
-    background-color: #28a745; /* Cambia el color de fondo según tus preferencias */
-    color: #fff; /* Cambia el color del texto según tus preferencias */
-    padding: 10px; /* Ajusta el relleno según tus preferencias */
-    margin-top: 10%;
-}
+
 
 .contacto{
   text-decoration: underline;
@@ -34,18 +27,42 @@ footer {
 }
 
 
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    position: relative;
+  }
+  
+  .content-container {
+    flex: 1;
+  }
+  
+  .principal {
+    padding: 20px;
+    margin-bottom: 200px; /* Ajusta el margen inferior para dejar espacio al footer */
+  }
+  
+  
+
+
+  .footer {
+    width: 100%;
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+  }
+
+
+
 @media only screen and (max-width: 768px) {
     h1{
         color: blueviolet;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         margin-top: 40%;
     }
-    footer {
-        width: 100%;
-        height: auto 0;
-        background-color: #28a745; /* Cambia el color de fondo según tus preferencias */
-        color: #fff; /* Cambia el color del texto según tus preferencias */
-        padding: 10px; /* Ajusta el relleno según tus preferencias */
-        margin-top: 30%;
-    }
+  
 }

@@ -16,6 +16,8 @@ export class VoyageComponent implements OnInit {
   numPersons: number = 0;
   opinion: Opinion = { id: 0, rating: 0, comment: '', voyage_id: 0, report_date: ''};
   isAuthenticated: boolean = false;
+  comentarioCreado: boolean = false; // Variable para controlar la visibilidad del mensaje
+
 
 
   constructor(public service: VoyageService, public navRoute: Router, public route: ActivatedRoute, private loginService: LoginService) {}
@@ -56,7 +58,7 @@ export class VoyageComponent implements OnInit {
   submitOpinion() {
     this.service.createOpinion(this.opinion, this.voyage.voyage_id).subscribe(response => {
       console.log('Opinión creada con éxito', response);
-      // Aquí puedes agregar lógica adicional, como mostrar un mensaje de éxito al usuario
+      this.comentarioCreado = true; // Mostrar mensaje de éxito
     });
   }
 

@@ -6,6 +6,17 @@
     z-index: 1;
 }
 
+#bienvenida{
+    width: 80%;
+    margin: 0 auto;
+}
+
+h2{
+    color: #127936; 
+    margin-bottom: 2rem;
+    font-size: 300%;
+    text-align: center;
+}
 
 @media only screen and (max-width: 768px) {
 

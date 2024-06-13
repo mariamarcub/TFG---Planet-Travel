@@ -20,3 +20,11 @@ li{
 #editar{
     float: right;
 }
+
+@media only screen and (max-width: 768px) {
+    
+    #contenedor{
+        margin-top: 40%;
+    }
+
+}
