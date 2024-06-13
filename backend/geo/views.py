@@ -114,32 +114,38 @@ class AgeGroupVoyagesAPIView(APIView):
 
 
 
-#VISUALIZA LA INFORMACIÓN DE UN VIAJE CONCRETO
+# VISUALIZA LA INFORMACIÓN DE UN VIAJE CONCRETO
 class ShowVoyageInfoAPIView(APIView):
     def get(self, request, voyage_id):
+        # Obtén el viaje o devuelve un 404 si no existe
         voyage = get_object_or_404(Voyage, pk=voyage_id)
-        client = get_object_or_404(Client, user=request.user)
-        purchase = Purchase.objects.filter(
-            client=client, voyage=voyage
-        ).first()
-        if voyage:
-            data = {
-                'voyage_id': voyage.id,
-                'voyage_info': voyage.itinerary,
-                'voyage_date_start': voyage.date_start,
-                'voyage_date_end': voyage.date_end,
-                'description': voyage.description,
-                'city_name': voyage.city.name,
-                'city_latitude': voyage.city.latitude,
-                'city_longitude': voyage.city.longitude,
-                'voyage_price': voyage.price,
-                'voyage_maximum_travelers': voyage.maximum_travelers,
-                'active_travelers': voyage.active_travelers,
-                'age_group': voyage.age_group,
-                'is_purchased': purchase is not None
-            }
-            return Response(data, status=status.HTTP_200_OK)
-        return Response({'Error': 'Voyage not found'}, status=status.HTTP_404_NOT_FOUND)
+
+        # Datos comunes para todos los usuarios
+        data = {
+            'voyage_id': voyage.id,
+            'voyage_info': voyage.itinerary,
+            'voyage_date_start': voyage.date_start,
+            'voyage_date_end': voyage.date_end,
+            'description': voyage.description,
+            'city_name': voyage.city.name,
+            'city_latitude': voyage.city.latitude,
+            'city_longitude': voyage.city.longitude,
+            'voyage_price': voyage.price,
+            'voyage_maximum_travelers': voyage.maximum_travelers,
+            'active_travelers': voyage.active_travelers,
+            'age_group': voyage.age_group
+        }
+
+        # Verifica si el usuario está autenticado
+        if request.user.is_authenticated:
+            try:
+                client = get_object_or_404(Client, user=request.user)
+                purchase = Purchase.objects.filter(client=client, voyage=voyage).first()
+                data['is_purchased'] = purchase is not None
+            except:
+                data['is_purchased'] = False
+
+        return Response(data, status=status.HTTP_200_OK)
 
 
 
